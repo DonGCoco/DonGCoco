@@ -1,114 +1,172 @@
-# Hi, I'm Jieru Dong 👋
+# Magic Leap VAC Experiment — Group 6
 
-### XR · Spatial Computing · Human-Centered AI
+Unity starter framework for the Group 6 experiment on **Vergence–Accommodation Conflict (VAC)** in optical see-through AR.
 
-I am an MSc student in **Virtual Reality and Augmented Reality at Lund University**, with a background in **Information Science and Engineering**.
+## Current scope
 
-My interests sit at the intersection of **extended reality, human perception, multimodal AI, and interactive systems**. I am particularly interested in how intelligent systems can understand human behaviour, perception, and physical context, and use that understanding to support more natural interaction between people, digital information, and the physical world.
+This branch implements the experiment core, not visual polish:
 
----
+- participant-ID based counterbalancing;
+- Low VAC / High VAC distances exposed as Unity Inspector parameters;
+- constant apparent-size scaling for the Tetris board;
+- stationary Tetris task;
+- deterministic Sequence A / Sequence B;
+- Tetris performance logging;
+- stereoscopic depth-judgment task;
+- balanced Left/Right closer-target randomization;
+- four formal pre/post depth tests per participant;
+- Training Mode;
+- CSV export;
+- pauses for questionnaires completed **outside the headset**.
 
-## 🔬 Research Interests
+## Headset model is still TBD
 
-### Extended Reality & Spatial Computing
+The exact Magic Leap model has not yet been confirmed, so the code intentionally does not hard-code Magic Leap 1 or Magic Leap 2 APIs or final VAC distances.
 
-I am interested in how interaction changes when interfaces move beyond traditional 2D screens and become embedded in physical and virtual space.
+Once the model is confirmed, the remaining device-specific work is:
 
-- Virtual Reality and Augmented Reality
-- Spatial user interfaces
-- Mixed Reality and passthrough interaction
-- Hand, gaze, and controller-based interaction
-- Context-aware spatial interfaces
-- Interaction design for immersive systems
+1. configure the correct Magic Leap Unity/OpenXR stack;
+2. map Magic Leap controller input to the existing public methods;
+3. confirm optical focal distance/focal planes;
+4. replace placeholder Low/High VAC values after pilot testing.
 
-### Human Perception in XR
+## Participant auto-assignment
 
-Immersive systems depend not only on rendering and hardware performance, but also on how people perceive and process visual information.
+The numeric part of Participant ID determines both condition order and Tetris sequence:
 
-- Visual comfort in head-mounted displays
-- Vergence–accommodation conflict
-- Depth perception and visual attention
-- Cognitive load in immersive interfaces
-- Quality of Experience (QoE)
-- Human factors in XR
+| IDs | Condition 1 | Condition 2 |
+|---|---|---|
+| P01, P05, ... | Low VAC + A | High VAC + B |
+| P02, P06, ... | High VAC + A | Low VAC + B |
+| P03, P07, ... | Low VAC + B | High VAC + A |
+| P04, P08, ... | High VAC + B | Low VAC + A |
 
-### Human-Centered & Multimodal AI
+## Inspector parameters
 
-I am interested in AI systems designed around human needs, behaviour, and decision-making rather than AI as an isolated technical component.
+Create an ExperimentConfig asset:
 
-- Human-AI interaction
-- Vision-language models
-- Multimodal interaction
-- AI-assisted decision making
-- Trust, uncertainty, and human agency
-- AI for accessibility
+Assets > Create > VAC Experiment > Experiment Config
 
-### Computer Vision & Visual Computing
+The following can be changed without rewriting experiment logic:
 
-Computer vision provides an important bridge between intelligent systems and the physical world.
+- Low VAC distance
+- High VAC distance
+- Tetris duration
+- Tetris drop interval
+- formal depth-trial count
+- training depth-trial count
+- depth difference
+- target horizontal angle
+- target angular size
 
-- Image processing and enhancement
-- Visual recognition
-- Motion and sensor data
-- Human-centred computer vision
-- Real-time visual systems
-- Computer graphics and visual perception
+The default VAC distances are placeholders until headset optics are confirmed.
 
----
+## Depth task randomization
 
-## 🧠 Research Direction
+For a 20-trial formal depth test, the code creates approximately:
 
-A question that connects much of what I am exploring is:
+- 10 Left-closer trials
+- 10 Right-closer trials
 
-> **How can intelligent systems better understand human perception and physical context to support natural spatial interaction?**
+and shuffles the order.
 
-I think about this through three connected layers:
+This keeps Left/Right exposure balanced while preventing a predictable pattern.
 
-**Human Perception → Intelligent Systems → Spatial Interfaces**
+## Questionnaires
 
-Rather than focusing only on individual models or technologies, I am interested in complete interactive systems where **sensing, perception, computation, and interaction** work together.
+All questionnaires are completed **outside the Magic Leap**.
 
-Current questions I am exploring include how spatial interfaces can present complex information without increasing cognitive load, how XR systems can account for perceptual limitations, how multimodal AI can handle imperfect real-world inputs, and how intelligent systems can support human decisions without removing human agency.
+Formal questionnaire points:
 
----
+1. baseline after setup/training;
+2. after Condition 1;
+3. after Condition 2.
 
-## 🛠 Technical Background
+Questionnaire data should use the same Participant ID so it can later be merged with Unity CSV output.
 
-**Programming**  
-`Python` · `C++` · `C#` · `Java` · `MATLAB` · `SQL`
+## Formal experiment flow
 
-**XR & Spatial Computing**  
-`Unity` · `OpenXR` · `XR Interaction Toolkit` · `Meta XR` · `AR Foundation` · `ARKit`
+1. Participant screening
+2. Magic Leap setup
+3. Tetris training in headset
+4. 3–5 depth-judgment practice trials
+5. Baseline questionnaire outside headset
+6. Condition 1 pre-depth test
+7. Condition 1 Tetris
+8. Condition 1 post-depth test
+9. Post-condition questionnaire outside headset
+10. Recovery
+11. Condition 2 pre-depth test
+12. Condition 2 Tetris
+13. Condition 2 post-depth test
+14. Post-condition questionnaire outside headset
 
-**AI & Computer Vision**  
-`PyTorch` · `OpenCV` · `Vision-Language Models` · `Image Processing` · `Multimodal AI`
+## Script structure
 
-**Design & Visual Computing**  
-`Figma` · `Blender` · `Computer Graphics` · `Shader Programming`
+Assets/VACExperiment/Scripts/
 
-**Research & Analysis**  
-`Experimental Design` · `Usability Testing` · `Quantitative Analysis` · `Qualitative Analysis`
+- Core/
+  - ExperimentConfig.cs
+  - ExperimentManager.cs
+  - ExperimentTypes.cs
+  - ParticipantAssignment.cs
+  - VACController.cs
+  - ExperimentDebugHUD.cs
+- Tetris/
+  - TetrominoType.cs
+  - TetrominoShapes.cs
+  - TetrisBoard.cs
+  - TetrisPiece.cs
+  - TetrisManager.cs
+  - TetrisSequenceManager.cs
+- Depth/
+  - DepthJudgmentManager.cs
+- Input/
+  - KeyboardExperimentInput.cs
+- Logging/
+  - DataLogger.cs
 
----
+## CSV output
 
-## 🎓 Education
+Unity writes data under Application.persistentDataPath:
 
-**Lund University**  
-MSc in Virtual Reality and Augmented Reality · Sweden · 2025–Present
+VACExperimentData/<ParticipantID>/
 
-**Ritsumeikan University**  
-BEng in Information Science and Engineering · Japan · 2021–2025
+Files:
 
----
+- events.csv
+- tetris_summary.csv
+- tetris_pieces.csv
+- depth_trials.csv
 
-## 🌍 Languages
+## Editor controls
 
-Chinese · Native  
-Japanese · JLPT N1  
-English · Professional working proficiency
+Tetris:
+- Left: Left Arrow / A
+- Right: Right Arrow / D
+- Rotate: Up Arrow / W
+- Soft drop: Down Arrow / S
+- Hard drop: Space
 
----
+Depth:
+- Left response: Left Arrow / A
+- Right response: Right Arrow / D
 
-## 📫 Interests & Collaboration
+## Development priorities
 
-I am open to research and technical opportunities in **XR, spatial computing, human-computer interaction, multimodal AI, computer vision, and human-centered intelligent systems**.
+1. Wire the Unity scene and test in Editor.
+2. Verify Low/High virtual-depth switching.
+3. Verify constant apparent board size.
+4. Verify Tetris and CSV output.
+5. Verify depth-task balance, accuracy, and reaction time.
+6. Confirm exact Magic Leap model.
+7. Add Magic Leap controller bindings.
+8. Pilot VAC values and freeze final experiment parameters.
+
+## Intentionally not implemented yet
+
+- in-headset questionnaires;
+- final Magic Leap SDK/controller binding;
+- final VAC distances;
+- fancy animations/effects;
+- automated statistics.
