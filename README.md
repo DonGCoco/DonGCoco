@@ -1,6 +1,6 @@
-[![Open the photographic clock — collage preview](swan-photo-clock/assets/readme-cloud.svg)](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=3)
+[![Animated photo-clock preview: moving cloud background and clock hand](swan-photo-clock/assets/readme-motion-v4.gif)](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=4)
 
-**[▶ LIVE CLOCK — your device time ↗](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=3)**
+**[▶ OPEN THE LIVE CLOCK — your device's current time ↗](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=4)**
 
 # Hi, I'm Jieru Dong 👋
 

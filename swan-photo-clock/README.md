@@ -1,25 +1,23 @@
-# Time, collected — live cloud photo clock
+# Time, collected — moving-cloud photo clock
 
-[![Twelve photographs arranged in a hand-drawn clock](assets/readme-cloud.svg)](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=3)
+[![Watch the animated cloud-and-photo clock](assets/readme-motion-v4.gif)](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=4)
 
+**[▶ OPEN THE LIVE CLOCK ↗](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=4)** — uses **your device's local time**, including a visibly moving seconds hand.
 
-**[▶ Open the live clock (current version)](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=3)**
+The preview above is a **real animated GIF** with shifting clouds and a moving clock hand. On the linked website, your original cloud video plays behind 12 flat, overlapping photographs. The image at 12 o'clock is now the suspended bird artwork, not the same cloud photo as the background. The 6 o'clock image is the swan photograph.
 
-A connected ring of twelve flat photographs over the user's **moving cloud video**. The hour, minute **and fine seconds** hands use your browser's local device time.
+**Why a link?** GitHub READMEs do not execute JavaScript, so they cannot display a live clock synchronized to each viewer's device. Only the linked webpage can do that. The README GIF is a motion preview, not a real-time clock.
 
-[Open the live interactive clock →](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=3)
+On an iPhone, if Low Power Mode, the browser, or in-app webview stops autoplay, the live page displays **“Tap to play moving clouds ▷”**. Tap it once to start the video.
 
-> The old GIF preview used a swan background and is retained as an **archive of v1**, not a preview of the current cloud version. GitHub README Markdown cannot render a local-time JavaScript clock; click the link above to see the actual clock.
+## Running locally
 
-## What's new
-- Replaced the swan video with the supplied cloud and sun-ray footage (muted grade).
-- Fixed 12 photo positions into a geometrically verified continuous overlap ring.
-- Added an understated live seconds hand so continuous clock movement is obvious.
-- Added iOS inline-video autoplay and resume handlers.
-- Added `live.html` as a separate cache-safe link to the current version.
+Serve the folder, for example with `python3 -m http.server 8000`, and open `http://localhost:8000/live.html`. The JavaScript clock hands use `new Date()` and update continuously.
 
-**[Design brief](DESIGN_PROMPT.md)** · [Archived v1 preview](assets/readme-preview.gif)
+## Art direction
 
-## Run locally
-
-Serve the repository root: `python3 -m http.server 8000`, then browse to `/swan-photo-clock/live.html`.
+- 12 photographs selected for visual harmony rather than calendar order.
+- A connected, organically overlapping ring of **flat rectangular photographs** (no frames, bevels, or shadows).
+- Deep, muted blue-gray clouds serve as moving atmosphere; warm red, amber, and pink images provide contrast.
+- Minimal white single-stroke hand-drawn numbers and watch hands.
+- The README itself uses a true animated GIF; the web page uses the real moving video and current computer/phone time.

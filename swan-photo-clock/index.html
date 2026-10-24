@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="dark">
-<title>Time, collected — cloud photo clock</title>
-<meta name="description" content="A hand-drawn live clock, twelve overlapping photos, and a moving clouds in motion. The hands always show your device's local time.">
+<title>Time, collected — moving cloud clock · v4</title>
+<meta name="description" content="A hand-drawn live clock, twelve overlapping photos, and a moving clouds in motion. The hands show your device's current local time.">
 <style>
   :root { color-scheme:dark; }
   * { box-sizing:border-box; }
@@ -44,24 +44,29 @@
   @media (min-aspect-ratio:24/35) { .scene { width:min(100vw, 68.57143dvh); } }
   @media (max-aspect-ratio:24/35) { .scene { width:100vw; } }
   @media (prefers-reduced-motion: reduce) { .backdrop video { animation:none; } }
+  @keyframes cloudWander {0%,100% { transform:scale(1.045) translate(-1%,0); } 50% { transform:scale(1.12) translate(2%,-.75%); }}
+  .backdrop video { animation:cloudWander 11.5s ease-in-out infinite; transform-origin:48% 55%; will-change:transform; }
+  @media (prefers-reduced-motion:reduce) { .backdrop video { animation:none; } }
+  .motion-activate { position:absolute;z-index:50;left:50%;bottom:3%;transform:translateX(-50%);border:1px solid #ffffff99;border-radius:24px;background:#13293dd6;color:#fff;padding:8px 13px;font:13px system-ui,sans-serif;white-space:nowrap;cursor:pointer; }
+  .motion-activate[hidden] { display:none; }
 </style>
 </head>
 <body>
 <main class="scene" role="img" aria-label="A live local-time analog clock, made from twelve overlapping photographs over a real moving cloud video.">
-  <div class="backdrop"><video src="./assets/cloud.mp4?v=3" poster="./assets/12.webp" autoplay loop muted playsinline webkit-playsinline preload="auto" aria-hidden="true"></video></div>
+  <div class="backdrop"><video src="./assets/cloud-motion-v4.mp4?v=4" poster="./assets/cloud-poster-v4.webp" autoplay loop muted playsinline webkit-playsinline preload="auto" aria-hidden="true"></video></div>
   <!-- 12 flat interlocked tiles, all 12 adjacent pairs overlap -->
-  <div class="tile" data-hour="12" style="--x:42.188%;--y:15.357%;--w:19.792%;--h:13.714%;--z:10;--dx:24.737%;--dy:-12.500%;--dw:48.421%"><img src="./assets/12.webp" alt="" loading="eager"></div>
-  <div class="tile" data-hour="1" style="--x:60.833%;--y:17.857%;--w:20.833%;--h:14.000%;--z:13;--dx:73.000%;--dy:-11.224%;--dw:30.000%"><img src="./assets/01.webp" alt="" loading="eager"></div>
-  <div class="tile" data-hour="2" style="--x:71.979%;--y:28.571%;--w:19.583%;--h:13.429%;--z:17;--dx:67.021%;--dy:-6.915%;--dw:31.915%"><img src="./assets/02.webp" alt="" loading="eager"></div>
-  <div class="tile" data-hour="3" style="--x:73.021%;--y:40.714%;--w:20.417%;--h:13.071%;--z:20;--dx:64.286%;--dy:12.568%;--dw:30.612%"><img src="./assets/03.webp" alt="" loading="eager"></div>
-  <div class="tile" data-hour="4" style="--x:68.750%;--y:52.571%;--w:20.833%;--h:13.214%;--z:15;--dx:72.000%;--dy:14.595%;--dw:30.000%"><img src="./assets/04.webp" alt="" loading="eager"></div>
-  <div class="tile" data-hour="5" style="--x:63.333%;--y:64.500%;--w:21.354%;--h:13.357%;--z:23;--dx:68.780%;--dy:14.439%;--dw:29.268%"><img src="./assets/05.webp" alt="" loading="eager"></div>
-  <div class="tile" data-hour="6" style="--x:45.938%;--y:72.714%;--w:21.250%;--h:13.571%;--z:28;--dx:36.765%;--dy:73.684%;--dw:29.412%"><img src="./assets/06.webp" alt="" loading="eager"></div>
-  <div class="tile" data-hour="7" style="--x:26.979%;--y:71.000%;--w:22.917%;--h:13.571%;--z:16;--dx:9.091%;--dy:76.842%;--dw:27.273%"><img src="./assets/07.webp" alt="" loading="eager"></div>
-  <div class="tile" data-hour="8" style="--x:12.813%;--y:61.071%;--w:22.396%;--h:13.429%;--z:22;--dx:1.395%;--dy:14.362%;--dw:27.907%"><img src="./assets/08.webp" alt="" loading="eager"></div>
-  <div class="tile" data-hour="9" style="--x:10.313%;--y:48.214%;--w:21.875%;--h:13.500%;--z:24;--dx:2.857%;--dy:12.169%;--dw:28.571%"><img src="./assets/09.webp" alt="" loading="eager"></div>
-  <div class="tile" data-hour="10" style="--x:12.604%;--y:35.143%;--w:21.563%;--h:14.000%;--z:26;--dx:-6.763%;--dy:-6.122%;--dw:46.377%"><img src="./assets/10.webp" alt="" loading="eager"></div>
-  <div class="tile" data-hour="11" style="--x:23.438%;--y:23.143%;--w:21.563%;--h:14.143%;--z:30;--dx:8.213%;--dy:-12.121%;--dw:44.928%"><img src="./assets/11.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="12" style="--x:42.188%;--y:15.357%;--w:19.792%;--h:13.714%;--z:10;--dx:24.737%;--dy:-12.500%;--dw:48.421%"><img src="./assets/12-v4.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="1" style="--x:60.833%;--y:17.857%;--w:20.833%;--h:14.000%;--z:13;--dx:73.000%;--dy:-11.224%;--dw:30.000%"><img src="./assets/01-v4.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="2" style="--x:71.979%;--y:28.571%;--w:19.583%;--h:13.429%;--z:17;--dx:67.021%;--dy:-6.915%;--dw:31.915%"><img src="./assets/02-v4.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="3" style="--x:73.021%;--y:40.714%;--w:20.417%;--h:13.071%;--z:20;--dx:64.286%;--dy:12.568%;--dw:30.612%"><img src="./assets/03-v4.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="4" style="--x:68.750%;--y:52.571%;--w:20.833%;--h:13.214%;--z:15;--dx:72.000%;--dy:14.595%;--dw:30.000%"><img src="./assets/04-v4.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="5" style="--x:63.333%;--y:64.500%;--w:21.354%;--h:13.357%;--z:23;--dx:68.780%;--dy:14.439%;--dw:29.268%"><img src="./assets/05-v4.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="6" style="--x:45.938%;--y:72.714%;--w:21.250%;--h:13.571%;--z:28;--dx:36.765%;--dy:73.684%;--dw:29.412%"><img src="./assets/06-v4.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="7" style="--x:26.979%;--y:71.000%;--w:22.917%;--h:13.571%;--z:16;--dx:9.091%;--dy:76.842%;--dw:27.273%"><img src="./assets/07-v4.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="8" style="--x:12.813%;--y:61.071%;--w:22.396%;--h:13.429%;--z:22;--dx:1.395%;--dy:14.362%;--dw:27.907%"><img src="./assets/08-v4.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="9" style="--x:10.313%;--y:48.214%;--w:21.875%;--h:13.500%;--z:24;--dx:2.857%;--dy:12.169%;--dw:28.571%"><img src="./assets/09-v4.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="10" style="--x:12.604%;--y:35.143%;--w:21.563%;--h:14.000%;--z:26;--dx:-6.763%;--dy:-6.122%;--dw:46.377%"><img src="./assets/10-v4.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="11" style="--x:23.438%;--y:23.143%;--w:21.563%;--h:14.143%;--z:30;--dx:8.213%;--dy:-12.121%;--dw:44.928%"><img src="./assets/11-v4.webp" alt="" loading="eager"></div>
   <!-- Tiles are CLOCKWISE, but are deliberately curated by colour, not by calendar month. -->
   <!-- x/y/w/h in percentages of the poster (960 x 1600 master composition). -->
   
@@ -88,6 +93,7 @@
   <g id="second-hand" class="hand" stroke-width="2.15" opacity=".64"><path d="M480 725 Q479 650 479 562"/></g>
   <path class="hub" d="M467 708 Q467 695 481 696 Q492 696 493 707 Q494 721 480 721 Q467 720 467 708Z"/>
 </svg>
+  <button type="button" class="motion-activate" hidden>Tap to play moving clouds ▷</button>
   <span class="time-aria" id="time-label"></span>
 </main>
 <script>
@@ -150,8 +156,23 @@
     document.addEventListener('touchstart',play,{passive:true});
     document.addEventListener('pointerdown',play,{passive:true});
   }
+  // Muted inline video normally autoplays. iOS Low Power Mode and in-app browsers
+  // sometimes prohibit autoplay; offer an explicit user-gesture play control.
+  const resume = document.querySelector('.motion-activate');
+  if (video && resume) {
+    const updateResume = () => {resume.hidden = !video.paused;};
+    video.addEventListener('playing', () => { resume.hidden = true; });
+    video.addEventListener('error', updateResume);
+    video.addEventListener('pause', updateResume);
+    resume.addEventListener('click', (event) => {
+      event.stopPropagation();
+      video.muted=true;
+      video.play().then(updateResume).catch(updateResume);
+    });
+    setTimeout(updateResume, 1800);
+  }
   // Easy test hook for the hands, without changing the visible UI.
-  window.__photoClock = { get localTime() { return new Date().toLocaleTimeString(); }, get videoPlaying() { return !!video && !video.paused && video.readyState >= 2; }, get secondAngle() { return document.getElementById('second-hand').getAttribute('transform'); } };
+  window.__photoClock = { get localTime() { return new Date().toLocaleTimeString(); }, get videoPlaying() { return !!video && !video.paused && video.readyState >= 2; }, get videoTime() {return video ? video.currentTime : null;}, get secondAngle() { return document.getElementById('second-hand').getAttribute('transform'); } };
 })();
 </script>
 </body>
