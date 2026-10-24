@@ -2,6 +2,8 @@
 
 **[▶ OPEN THE LIVE CLOCK — your device's current time ↗](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=5)**
 
+**[View my portfolio ↗](https://dongcoco.github.io/DonGCoco/)**  ·  XR / Spatial Computing / Human-Centered AI
+
 # Hi, I'm Jieru Dong 👋
 
 ### XR · Spatial Computing · Human-Centered AI
