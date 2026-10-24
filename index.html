@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#d8d7d0"><meta name="description" content="Jieru Dong — interactive research portfolio. Human perception, computer vision and spatial computing.">
-<title>Jieru Dong — Perception Atlas / Interactive Study</title>
+<title>Jieru Dong — XR, Spatial Computing & Human Perception</title>
 <style>
 :root{--paper:#d8d7d0;--bone:#e9e8e1;--white:#f5f5f0;--ink:#171d1c;--gray:#616966;--hair:#a6aaa3;--acid:#c4f75c;--dark:#1a2322;--max:1360px}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:82px}body{background:var(--paper);color:var(--ink);margin:0;font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button{font:inherit}::selection{background:var(--acid);color:#111}img{max-width:100%}
@@ -94,9 +94,22 @@ body{background:#d8d7d0}
 }
 @media(max-width:395px){.narrative h1{font-size:clamp(52px,12vw,70px)}.narrative p{font-size:12px}.nav-shell .navlinks a:last-child{display:none}.scene-selector button{padding:9px 5px}}
 @media(prefers-reduced-motion:reduce){#perception-canvas{animation:none}html{scroll-behavior:auto}.narrative,.section-top,.project,.other,.topic,.about>*{transition:none!important}.has-reveal .section-top:not(.is-visible),.has-reveal .project:not(.is-visible),.has-reveal .other:not(.is-visible),.has-reveal .topic:not(.is-visible),.has-reveal .about>*:not(.is-visible){opacity:1;transform:none}}
+
+/* Personal academic identity; keep Perception Atlas as the internal concept only. */
+.nav-shell .brand{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;white-space:normal;line-height:1.05;letter-spacing:0}
+.nav-shell .brand-main{font-size:22px;font-weight:750;letter-spacing:-.05em;color:#171d1c}
+.nav-shell .brand-sub{font-size:9px;line-height:1.25;letter-spacing:.045em;color:#56615a;font-weight:550}
+@media(max-width:760px){
+ .nav-shell .nav-inner{gap:9px}
+ .nav-shell .brand{max-width:215px;flex:1;min-width:0}
+ .nav-shell .brand-main{font-size:18px}
+ .nav-shell .brand-sub{font-size:8px;line-height:1.22;letter-spacing:0;max-width:212px}
+ .nav-shell .navlinks{gap:9px;flex-shrink:0}
+}
+@media(max-width:380px){.nav-shell .brand{max-width:192px}.nav-shell .brand-sub{font-size:7.5px}.nav-shell .navlinks a{font-size:8px}}
 </style></head><body>
 <header class="nav-shell"><div class="nav-inner wrap">
-<a class="brand" href="#top" aria-label="Back to top">jd<span> /</span> perception atlas</a>
+<a class="brand" href="#top" aria-label="Jieru Dong — back to top"><span class="brand-main">Jieru Dong</span><span class="brand-sub">Spatial Computing · Human Perception · Interactive AI</span></a>
 <nav class="navlinks" aria-label="Site navigation"><a href="#top">Experience</a><a href="#work">Work</a><a href="#research">Research</a><a href="#about">About</a></nav>
 <div class="right-note">Jieru Dong · Lund University</div></div></header>
 <main id="top">
