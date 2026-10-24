@@ -1,8 +1,8 @@
 # Time, collected — moving-cloud photo clock
 
-[![Watch the animated cloud-and-photo clock](assets/readme-motion-v4.gif)](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=4)
+[![Small imperfect hand-drawn clock numbers over drifting cloud photo collage](assets/readme-v5-animated.svg)](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=5)
 
-**[▶ OPEN THE LIVE CLOCK ↗](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=4)** — uses **your device's local time**, including a visibly moving seconds hand.
+**[▶ OPEN THE LIVE CLOCK ↗](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=5)** — uses **your device's local time**, including a moving seconds hand.
 
 The preview above is a **real animated GIF** with shifting clouds and a moving clock hand. On the linked website, your original cloud video plays behind 12 flat, overlapping photographs. The image at 12 o'clock is now the suspended bird artwork, not the same cloud photo as the background. The 6 o'clock image is the swan photograph.
 
