@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Time, collected — cloud photo clock</title>
+<meta name="description" content="A hand-drawn live clock, twelve overlapping photos, and a moving clouds in motion. The hands always show your device's local time.">
+<style>
+  :root { color-scheme:dark; }
+  * { box-sizing:border-box; }
+  html, body { margin:0; width:100%; min-height:100%; background:#071b32; }
+  body { display:grid; place-items:center; min-height:100dvh; overflow:hidden; }
+  .scene {
+    position:relative; flex:none;
+    width:min(100vw, 68.57143dvh); height:auto; aspect-ratio:24 / 35;
+    overflow:hidden; isolation:isolate; background:#1a2b3e;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .backdrop { position:absolute;inset:0;z-index:0;overflow:hidden; }
+  .backdrop video {
+    display:block; width:100%; height:100%; object-fit:cover; object-position:center 50%;
+    filter:saturate(.7) brightness(.57) contrast(.94);
+  }
+  .backdrop:after { content:"";position:absolute;inset:0;background:rgba(5,17,36,.37);pointer-events:none; }
+  .tile {
+    position:absolute; z-index:var(--z, 2); overflow:visible;
+    left:var(--x);top:var(--y);width:var(--w);height:var(--h);
+    /* The edges must meet/overlap: no borders, rounded corners, drop shadows, mats or 3D. */
+  }
+  .tile img { display:block;width:100%;height:100%;object-fit:cover;border-radius:0;border:0;box-shadow:none; }
+  .digit {
+    position:absolute; pointer-events:none; overflow:visible;
+    width:var(--dw, 34%); height:50%; left:var(--dx,6%); top:var(--dy,-6%);
+    filter:none;
+  }
+  .digit path { fill:none;stroke:#fff;stroke-width:2.9;stroke-linecap:round;stroke-linejoin:round; }
+  .clock { position:absolute;inset:0; z-index:20;display:block;overflow:visible;pointer-events:none; }
+  .hand { stroke:#fff; fill:none; stroke-linecap:round;stroke-linejoin:round; }
+  .hand.hour { stroke-width:5; }
+  .hand.minute { stroke-width:5.2; }
+  .hub { fill:#fff;stroke:#fff;stroke-width:2; }
+  .time-aria { position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap; }
+  @media (min-aspect-ratio:24/35) { .scene { width:min(100vw, 68.57143dvh); } }
+  @media (max-aspect-ratio:24/35) { .scene { width:100vw; } }
+  @media (prefers-reduced-motion: reduce) { .backdrop video { animation:none; } }
+</style>
+</head>
+<body>
+<main class="scene" role="img" aria-label="A live local-time analog clock, made from twelve overlapping photographs over a real moving cloud video.">
+  <div class="backdrop"><video src="./assets/cloud.mp4?v=3" poster="./assets/12.webp" autoplay loop muted playsinline webkit-playsinline preload="auto" aria-hidden="true"></video></div>
+  <!-- 12 flat interlocked tiles, all 12 adjacent pairs overlap -->
+  <div class="tile" data-hour="12" style="--x:42.188%;--y:15.357%;--w:19.792%;--h:13.714%;--z:10;--dx:24.737%;--dy:-12.500%;--dw:48.421%"><img src="./assets/12.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="1" style="--x:60.833%;--y:17.857%;--w:20.833%;--h:14.000%;--z:13;--dx:73.000%;--dy:-11.224%;--dw:30.000%"><img src="./assets/01.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="2" style="--x:71.979%;--y:28.571%;--w:19.583%;--h:13.429%;--z:17;--dx:67.021%;--dy:-6.915%;--dw:31.915%"><img src="./assets/02.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="3" style="--x:73.021%;--y:40.714%;--w:20.417%;--h:13.071%;--z:20;--dx:64.286%;--dy:12.568%;--dw:30.612%"><img src="./assets/03.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="4" style="--x:68.750%;--y:52.571%;--w:20.833%;--h:13.214%;--z:15;--dx:72.000%;--dy:14.595%;--dw:30.000%"><img src="./assets/04.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="5" style="--x:63.333%;--y:64.500%;--w:21.354%;--h:13.357%;--z:23;--dx:68.780%;--dy:14.439%;--dw:29.268%"><img src="./assets/05.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="6" style="--x:45.938%;--y:72.714%;--w:21.250%;--h:13.571%;--z:28;--dx:36.765%;--dy:73.684%;--dw:29.412%"><img src="./assets/06.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="7" style="--x:26.979%;--y:71.000%;--w:22.917%;--h:13.571%;--z:16;--dx:9.091%;--dy:76.842%;--dw:27.273%"><img src="./assets/07.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="8" style="--x:12.813%;--y:61.071%;--w:22.396%;--h:13.429%;--z:22;--dx:1.395%;--dy:14.362%;--dw:27.907%"><img src="./assets/08.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="9" style="--x:10.313%;--y:48.214%;--w:21.875%;--h:13.500%;--z:24;--dx:2.857%;--dy:12.169%;--dw:28.571%"><img src="./assets/09.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="10" style="--x:12.604%;--y:35.143%;--w:21.563%;--h:14.000%;--z:26;--dx:-6.763%;--dy:-6.122%;--dw:46.377%"><img src="./assets/10.webp" alt="" loading="eager"></div>
+  <div class="tile" data-hour="11" style="--x:23.438%;--y:23.143%;--w:21.563%;--h:14.143%;--z:30;--dx:8.213%;--dy:-12.121%;--dw:44.928%"><img src="./assets/11.webp" alt="" loading="eager"></div>
+  <!-- Tiles are CLOCKWISE, but are deliberately curated by colour, not by calendar month. -->
+  <!-- x/y/w/h in percentages of the poster (960 x 1600 master composition). -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <svg class="clock" viewBox="0 0 960 1400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <g id="minute-hand" class="hand minute">
+    <path d="M480 708 Q478 656 481 604 Q479 555 479 500"/>
+    <path d="M466 515 Q473 506 479 496 Q486 506 494 515"/>
+  </g>
+  <g id="hour-hand" class="hand hour">
+    <path d="M480 708 Q479 680 479.5 651 Q480.5 619 479 594"/>
+    <path d="M466 606 Q473 599 479 591 Q486 600 492 606"/>
+  </g>
+  <g id="second-hand" class="hand" stroke-width="2.15" opacity=".64"><path d="M480 725 Q479 650 479 562"/></g>
+  <path class="hub" d="M467 708 Q467 695 481 696 Q492 696 493 707 Q494 721 480 721 Q467 720 467 708Z"/>
+</svg>
+  <span class="time-aria" id="time-label"></span>
+</main>
+<script>
+(() => {
+  'use strict';
+  // Tiny hand-drawn digit alphabet; deliberately not a heavy display font.
+  const strokes = {
+    '0': 'M18 4 Q30 3 29 22 Q29 43 17 46 Q3 43 5 24 Q7 5 18 4Z',
+    '1': 'M5 11 Q11 8 18 3 Q18 24 17 46',
+    '2': 'M5 12 Q7 1 20 4 Q34 7 27 21 Q21 32 5 44 Q16 46 31 43',
+    '3': 'M6 7 Q21 0 28 11 Q28 20 16 24 Q29 24 29 35 Q28 48 7 44',
+    '4': 'M26 3 Q17 16 5 32 Q17 31 30 31 M25 4 Q23 26 24 46',
+    '5': 'M29 5 Q17 6 9 5 L7 23 Q16 18 25 25 Q35 37 23 44 Q12 49 5 41',
+    '6': 'M26 5 Q12 16 9 29 Q5 43 17 46 Q30 46 29 34 Q27 22 11 28',
+    '7': 'M4 6 Q17 5 30 5 Q17 26 13 46',
+    '8': 'M17 4 Q31 4 27 17 Q24 24 17 26 Q3 32 6 40 Q10 48 21 45 Q36 40 25 29 Q12 20 7 14 Q7 6 17 4',
+    '9': 'M26 27 Q13 33 8 24 Q2 13 13 6 Q25 1 28 15 Q31 30 16 46',
+  };
+  document.querySelectorAll('[data-hour]').forEach((tile) => {
+    const hour = tile.dataset.hour;
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    const w = hour.length === 2 ? 69 : 35;
+    svg.setAttribute('class', 'digit');
+    svg.setAttribute('viewBox', `0 0 ${w} 50`);
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    svg.setAttribute('aria-hidden','true');
+    [...hour].forEach((digit, i) => {
+      const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      p.setAttribute('d', strokes[digit]);
+      p.setAttribute('transform', `translate(${i * 34} 0) rotate(${i % 2 ? -3 : 2} 17 25)`);
+      svg.appendChild(p);
+    });
+    tile.appendChild(svg);
+  });
+  const minuteHand = document.getElementById('minute-hand');
+  const secondHand = document.getElementById('second-hand');
+  const hourHand = document.getElementById('hour-hand');
+  const sr = document.getElementById('time-label');
+  let lastText = '';
+  function tick() {
+    const now = new Date(); // Viewer device's own current local time and timezone.
+    const secs = now.getSeconds() + now.getMilliseconds()/1000;
+    const minutes = now.getMinutes() + secs/60;
+    const hours = (now.getHours() % 12) + minutes/60;
+    minuteHand.setAttribute('transform', `rotate(${minutes * 6} 480 708)`);
+    hourHand.setAttribute('transform', `rotate(${hours * 30} 480 708)`);
+    secondHand.setAttribute('transform', `rotate(${secs * 6} 480 708)`);
+    const time = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+    if (time !== lastText) { lastText = time; sr.textContent=`Local time ${time}`; }
+    requestAnimationFrame(tick);
+  }
+  tick();
+  const video = document.querySelector('video');
+  if (video) {
+    video.defaultMuted=true; video.muted=true;
+    const play=()=>{ if(video.paused) video.play().catch(()=>{}); };
+    play();
+    window.addEventListener('pageshow',play);
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden) play()});
+    document.addEventListener('touchstart',play,{passive:true});
+    document.addEventListener('pointerdown',play,{passive:true});
+  }
+  // Easy test hook for the hands, without changing the visible UI.
+  window.__photoClock = { get localTime() { return new Date().toLocaleTimeString(); }, get videoPlaying() { return !!video && !video.paused && video.readyState >= 2; }, get secondAngle() { return document.getElementById('second-hand').getAttribute('transform'); } };
+})();
+</script>
+</body>
+</html>
