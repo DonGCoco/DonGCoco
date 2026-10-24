@@ -1,5 +1,3 @@
-# A Clock Made of Photographs
-
 [![Open the live photo clock](assets/readme-preview.gif)](https://DonGCoco.github.io/DonGCoco/swan-photo-clock/)
 
 **[Open the live clock ↗](https://DonGCoco.github.io/DonGCoco/swan-photo-clock/)** · Automatically uses **your device's local time**.
