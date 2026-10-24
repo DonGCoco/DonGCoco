@@ -31,14 +31,6 @@ I am an MSc student in **Virtual Reality and Augmented Reality at Lund Universit
 - **Lund University** — MSc, Virtual Reality and Augmented Reality · 2025–present
 - **Ritsumeikan University** — BEng, Information Science and Engineering · 2021–2025
 
-## Creative Experiment · Time, Collected
-
-A twelve-photo editorial collage clock with moving clouds and handwritten markers. The live page reads each visitor's local device time.
-
-[![Moving photographic clock](swan-photo-clock/assets/readme-motion-v4.gif)](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=5)
-
-**[Open the live photo clock ↗](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=5)**
-
 ---
 
 I welcome research discussions and collaborations related to XR, computer vision, spatial interfaces, and human-centered AI.
