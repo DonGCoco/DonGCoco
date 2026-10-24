@@ -1,5 +1,8 @@
 # Time, collected — live cloud photo clock
 
+[![Twelve photographs arranged in a hand-drawn clock](assets/readme-cloud.svg)](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=3)
+
+
 **[▶ Open the live clock (current version)](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=3)**
 
 A connected ring of twelve flat photographs over the user's **moving cloud video**. The hour, minute **and fine seconds** hands use your browser's local device time.
