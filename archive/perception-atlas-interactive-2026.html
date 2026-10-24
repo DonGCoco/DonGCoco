@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#d8d7d0"><meta name="description" content="Jieru Dong — interactive research portfolio. Human perception, computer vision and spatial computing.">
+<title>Jieru Dong — XR, Spatial Computing & Human Perception</title>
+<style>
+:root{--paper:#d8d7d0;--bone:#e9e8e1;--white:#f5f5f0;--ink:#171d1c;--gray:#616966;--hair:#a6aaa3;--acid:#c4f75c;--dark:#1a2322;--max:1360px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:82px}body{background:var(--paper);color:var(--ink);margin:0;font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button{font:inherit}::selection{background:var(--acid);color:#111}img{max-width:100%}
+.wrap{width:min(calc(100% - 96px),var(--max));margin:auto}
+header{position:sticky;z-index:20;top:0;background:rgba(216,215,208,.94);backdrop-filter:blur(20px);border-bottom:1px solid #7c837c77}header .nav-inner{min-height:68px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px}.brand{font-weight:bold;letter-spacing:-.06em;font-size:22px}.brand span{color:#66706c}.navlinks{display:flex;gap:30px;align-items:center}.navlinks a{font-size:11px;text-transform:uppercase;letter-spacing:.1em;white-space:nowrap;font-weight:bold}.navlinks a:hover{text-decoration:underline;text-underline-offset:5px}.nav-r{justify-self:end;display:flex;gap:10px;align-items:center}.nav-r .availability{height:7px;width:7px;border-radius:50%;background:#566e35;box-shadow:0 0 0 3px #bac3b4}.nav-r span{font-size:10px;letter-spacing:.13em;text-transform:uppercase}
+.hero{border-bottom:1px solid var(--ink)}.hero .topline{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 0;border-bottom:1px solid #89918a77;font-size:11px;letter-spacing:.15em;text-transform:uppercase}.hero-content{min-height:580px;display:grid;grid-template-columns:.93fr 1.07fr;gap:30px;align-items:center}.hero-type{padding:76px 0 82px}.marker{display:inline-flex;gap:9px;align-items:center;font-size:11px;font-weight:bold;letter-spacing:.17em;text-transform:uppercase;margin-bottom:26px}.marker:before{content:"";display:inline-block;background:var(--acid);border:1px solid var(--ink);width:18px;height:18px;transform:rotate(13deg)}
+h1{font-size:clamp(62px,8.3vw,124px);letter-spacing:-.09em;line-height:.83;font-weight:500;margin:0;max-width:650px}h1 em{font-weight:400;font-family:Georgia,serif;letter-spacing:-.11em;display:block}h1 .slash{margin-left:12px;font-style:normal;font-family:Arial,Helvetica,sans-serif;color:#6c746e;font-weight:200}.hero-copy{font-size:15px;line-height:1.72;max-width:475px;margin:38px 0 30px;color:#393f3b}.hero-links{display:flex;gap:14px;flex-wrap:wrap;align-items:center}.action{padding:15px 19px;font-size:12px;letter-spacing:.08em;font-weight:700;display:inline-block;border:1px solid var(--ink);transition:transform .2s}.action.primary{background:var(--ink);color:var(--bone)}.action:hover{transform:translateY(-3px)}.academic-note{font-size:10px;color:#595f5b;letter-spacing:.05em;margin-top:22px}
+.scene{width:100%;aspect-ratio:1/1.1;max-height:680px;position:relative;overflow:hidden;border-left:1px solid #89918a77;border-right:1px solid #89918a77;background:radial-gradient(circle at 60% 42%,#eceae1 0%,#d3d4cc 65%,#bfc4bb 100%)}.scene::before{position:absolute;inset:0;content:"";pointer-events:none;background-image:linear-gradient(#7f8a7d22 1px, transparent 1px),linear-gradient(90deg,#7f8a7d22 1px,transparent 1px);background-size:48px 48px}.scene::after{position:absolute;inset:0;content:"";pointer-events:none;background:radial-gradient(circle at 54% 51%,transparent 30%,#d5d7cebb 100%)}.scene svg{position:absolute;inset:0;width:100%;height:100%;transform:translateY(calc(var(--scroll-shift,0px)*.25));transition:transform .8s cubic-bezier(.16,1,.3,1)}.scene:hover svg{transform:translateY(-12px) rotate(.6deg)}.scene-label{position:absolute;left:20px;top:20px;font-size:10px;letter-spacing:.14em;font-weight:bold;z-index:2}.scene-label b{display:block;font-size:13px;letter-spacing:0;text-transform:none;margin-top:4px;font-weight:normal}.scene-legend{position:absolute;z-index:3;bottom:20px;left:20px;right:20px;display:flex;justify-content:space-between;font-size:9px;line-height:1.5;letter-spacing:.12em;text-transform:uppercase}.scene-legend span:last-child{text-align:right}
+.band{padding:23px 0;border-bottom:1px solid var(--ink)}.band-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}.band span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;line-height:1.5}.band span:nth-child(2){text-align:center}.band span:nth-child(3){text-align:right}
+.section{border-bottom:1px solid #979e977e;padding:105px 0 116px}.section-top{display:grid;grid-template-columns:1fr 2fr;gap:32px;margin-bottom:58px}.section-id{font-size:11px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;padding-top:11px}.section-top h2{font-size:clamp(48px,6vw,92px);letter-spacing:-.075em;line-height:.93;font-weight:500;margin:0;max-width:850px}.section-top h2 em{font-family:Georgia,serif;font-weight:400}.section-intro{grid-column:2;font-size:17px;line-height:1.65;max-width:740px;color:#525a55;margin:4px 0 0}
+.project{display:grid;grid-template-columns:1.25fr .9fr;gap:42px;align-items:start;padding:28px 0 46px;border-top:1px solid #838b83aa}.project.no-border{border-top:0}.project figure{margin:0;min-height:340px;position:relative;background:#17211f;overflow:hidden}.project figure .visual{height:100%;width:100%;display:block;position:absolute;inset:0}.project figure .vis-label{position:absolute;z-index:2;left:22px;top:20px;color:#e7eee2;font-size:10px;text-transform:uppercase;letter-spacing:.18em}.project figure .vis-caption{position:absolute;z-index:2;left:22px;bottom:20px;color:#d9e1d7;font-size:10px;letter-spacing:.1em;line-height:1.6;text-transform:uppercase}.project-body{padding:1px 0}.project-id{font-size:11px;text-transform:uppercase;letter-spacing:.17em;color:#59615a}.project h3{font-size:clamp(29px,3.2vw,50px);line-height:1.03;letter-spacing:-.06em;font-weight:500;margin:17px 0 23px}.project p{font-size:14px;line-height:1.8;color:#4e5750;margin:0 0 26px}.project .tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:30px}.project .tags span{font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:8px 9px;border:1px solid #98a19a}.inline-link{display:inline-block;border-bottom:1px solid currentColor;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:bold;padding-bottom:6px}.other-projects{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;margin-top:18px}.other{padding:22px 20px 26px;background:#c7cbc1;border-top:1px solid #69766c;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;transition:background .2s}.other:hover{background:#bec5b7}.other .count{font-size:11px;letter-spacing:.17em}.other h3{font-size:25px;line-height:1.08;letter-spacing:-.05em;font-weight:500;margin:24px 0 16px}.other p{font-size:12px;line-height:1.55;color:#4d564e;margin:0}.other a{font-size:11px;font-weight:bold;letter-spacing:.06em;border-bottom:1px solid;align-self:flex-start;margin-top:24px}
+.research{background:#1b2421;color:#ecf0e9;padding-bottom:135px}.research .section-top h2{max-width:650px}.research .section-intro{color:#9fac9d}.research .section-id{color:#a5b1a5}.topics{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #798477aa}.topic{padding:27px 25px 19px 0;border-right:1px solid #798477aa;margin-right:24px}.topic:last-child{border-right:none;margin-right:0}.topic small{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#c4f75c;margin-bottom:42px}.topic h3{font-size:25px;font-weight:400;letter-spacing:-.04em;line-height:1.15;margin:0 0 17px}.topic p{font-size:12px;line-height:1.75;color:#b9c2b8;margin:0}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:80px}.about h3{font-size:32px;letter-spacing:-.05em;line-height:1.12;font-weight:400;margin:0 0 22px}.about p{font-size:14px;line-height:1.9;color:#4a554c}.about dl{margin:0}.about dl div{display:grid;grid-template-columns:140px 1fr;padding:15px 0;border-bottom:1px solid #959e9477;font-size:12px;line-height:1.6}.about dt{text-transform:uppercase;letter-spacing:.09em;color:#616a62}.about dd{margin:0}
+.closing{padding:75px 0 50px;background:#c3c8bb}.closing-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px}.closing h2{font-size:clamp(50px,6.3vw,95px);line-height:.92;letter-spacing:-.07em;font-weight:500;margin:0}.closing h2 em{font-family:Georgia,serif;font-weight:400}.closing p{font-size:14px;line-height:1.85;color:#4d584e}.closing .action{margin-top:16px}.footer{margin-top:90px;border-top:1px solid #90998e;padding-top:19px;display:flex;justify-content:space-between;gap:18px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#4d564f}
+@media(max-width:1024px){.wrap{width:min(calc(100% - 48px),var(--max))}.hero-content{grid-template-columns:1fr 1fr}.scene{max-height:560px}.project{gap:28px}.topics{grid-template-columns:repeat(2,1fr)}.topic:nth-child(2){border-right:0}.topic{margin-bottom:24px}}
+@media(max-width:720px){header .nav-inner{grid-template-columns:1fr auto;min-height:62px}.navlinks{grid-column:1/-1;grid-row:2;gap:16px;overflow:auto;padding:0 0 13px}.nav-r{grid-column:2;grid-row:1}.wrap{width:calc(100% - 36px)}.hero-content{grid-template-columns:1fr;gap:0}.hero-type{padding:63px 0 28px}h1{font-size:clamp(66px,15vw,100px);max-width:530px}.hero-copy{margin:25px 0 21px}.scene{max-height:none;aspect-ratio:1/1.07;border:1px solid #89918a77}.hero .topline{font-size:9px;gap:7px}.band-inner{grid-template-columns:1fr 1fr}.band span:nth-child(2){text-align:right}.band span:nth-child(3){grid-column:1/-1;text-align:left}.section{padding:64px 0 74px}.section-top{grid-template-columns:1fr;margin-bottom:28px;gap:16px}.section-intro{grid-column:1}.project{grid-template-columns:1fr;gap:22px;padding-bottom:35px}.project figure{height:260px;min-height:unset}.project h3{margin:12px 0 15px}.project .tags{margin-bottom:17px}.other-projects{grid-template-columns:1fr}.other{min-height:190px}.topics{grid-template-columns:1fr}.topic{border-right:0;border-bottom:1px solid #798477aa;margin:0}.topic small{margin-bottom:20px}.about,.closing-inner{grid-template-columns:1fr;gap:24px}.closing h2{font-size:68px}.footer{margin-top:56px;flex-direction:column}.research{padding-bottom:75px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.scene svg,.action,.other{transition:none!important}}
+
+/* Interactive art direction — layered over the original academic research content. */
+html{scroll-behavior:auto;scroll-padding-top:76px}
+body{background:#d8d7d0}
+.nav-shell{position:fixed;top:0;left:0;right:0;z-index:45;background:rgba(216,215,208,.79);border-bottom:1px solid #424a4447;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.nav-shell .nav-inner{height:65px;min-height:65px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.nav-shell .brand{font-size:22px;letter-spacing:-.065em;white-space:nowrap}
+.nav-shell .navlinks{gap:25px}
+.nav-shell .navlinks a{font-size:10px;letter-spacing:.12em}
+.nav-shell .right-note{font-size:10px;text-transform:uppercase;letter-spacing:.13em;white-space:nowrap}
+.immersive{height:340svh;position:relative;background:radial-gradient(circle at 76% 44%,#e6e4d9 0%,#d7d8d0 36%,#c5cac2 85%);border-bottom:1px solid #353d3777}
+.immersive-stage{height:100svh;position:sticky;top:0;isolation:isolate;overflow:hidden}
+.immersive-stage:before{content:"";position:absolute;z-index:0;inset:0;pointer-events:none;opacity:.4;background:linear-gradient(90deg,transparent 0%,transparent 55%,#b7c1b46d 100%),linear-gradient(90deg,#63726322 1px, transparent 1px),linear-gradient(#63726322 1px,transparent 1px);background-size:auto,82px 82px,82px 82px;mask-image:linear-gradient(90deg,transparent 40%,#000 100%)}
+.stage-grid{height:100%;position:relative;z-index:1;display:grid;grid-template-columns: minmax(0,.96fr) minmax(0,1.04fr);align-items:center;gap:12px;padding-top:82px;padding-bottom:68px}
+.stage-left{align-self:center;position:relative;z-index:4;min-height:560px;display:flex;align-items:center;pointer-events:none}
+.stage-left button,.stage-left a,.stage-meta button{pointer-events:auto}
+.narrative{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateY(42px);pointer-events:none;transition:opacity .48s ease, transform .75s cubic-bezier(.18,.75,.21,1)}
+.narrative.active{opacity:1;transform:translateY(0);pointer-events:auto}
+.narrative .overline{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:32px}
+.narrative .overline:before{content:"";width:22px;height:22px;background:#c4f75c;clip-path:polygon(0 0,100% 10%,88% 100%,9% 85%);border:1px solid #171d1c}
+.narrative h1{font-size:clamp(61px,7.7vw,126px);line-height:.86;letter-spacing:-.09em;font-weight:500;max-width:none;margin:0 0 35px}
+.narrative h1 em{display:block;font-weight:400;font-family:Georgia,serif;font-style:italic;letter-spacing:-.09em}
+.narrative p{font-size:15px;line-height:1.8;max-width:480px;margin:0;color:#475047}
+.narrative p strong{color:#18201b}
+.narrative .mini{margin-top:24px;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#59655c}
+.narrative .mini span{display:inline-block;width:7px;height:7px;border-radius:50%;background:#181f19;margin-right:9px}
+.perception-art{height:min(79svh,800px);width:100%;position:relative;min-height:470px;z-index:2;touch-action:pan-y;cursor:grab}
+.perception-art.dragging{cursor:grabbing;touch-action:none}
+#perception-canvas{display:block;width:100%;height:100%;pointer-events:none}
+.art-corner{position:absolute;left:18px;top:12px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;line-height:1.7;pointer-events:none}
+.art-corner.right{left:auto;right:11px;top:auto;bottom:25px;text-align:right}
+.art-corner .green{display:inline-block;width:6px;height:6px;background:#a9eb3f;border-radius:50%;box-shadow:0 0 12px #c4f75c;vertical-align:middle;margin-right:7px}
+.art-viewer-note{position:absolute;left:50%;bottom:50px;transform:translateX(-50%);font-size:10px;letter-spacing:.16em;white-space:nowrap;text-transform:uppercase;color:#3d4c40a8;pointer-events:none}
+@keyframes artworkBreath{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-5px) scale(1.009)}}
+#perception-canvas{animation:artworkBreath 10s ease-in-out infinite}
+.art-cursor{position:absolute;border:1px solid #2d382d88;border-radius:50%;width:37px;height:37px;margin-left:-18.5px;margin-top:-18.5px;pointer-events:none;opacity:0;z-index:4;transition:opacity .2s ease}
+.perception-art:hover .art-cursor{opacity:1}
+.art-cursor:before,.art-cursor:after{content:"";position:absolute;background:#2d382d44}
+.art-cursor:before{left:50%;top:-6px;bottom:-6px;width:1px}.art-cursor:after{top:50%;left:-6px;right:-6px;height:1px}
+.stage-meta{position:absolute;z-index:5;left:0;right:0;bottom:23px;display:flex;align-items:end;justify-content:space-between;gap:25px}
+.scene-selector{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.scene-selector button{border:1px solid #49524969;background:transparent;color:#333e35;padding:11px 13px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+.scene-selector button.active,.scene-selector button:hover{background:#1a231f;color:#eef3e6}
+.stage-instruction{font-size:10px;line-height:1.8;letter-spacing:.11em;text-transform:uppercase;text-align:right;color:#556157}
+.readout{display:flex;gap:8px;align-items:center;position:absolute;z-index:6;left:50%;top:85px;transform:translateX(-50%);font-size:10px;letter-spacing:.15em;text-transform:uppercase;white-space:nowrap}
+.readout .indicator{width:8px;height:8px;border-radius:50%;background:#9fe92d;box-shadow:0 0 12px #b8ff5a}
+.scroll-track{position:absolute;z-index:7;top:25%;right:13px;height:49%;width:1px;background:#58665b66}
+.scroll-track i{display:block;position:absolute;top:0;width:3px;height:33%;left:-1px;background:#18231a;transform:translateY(0);will-change:transform}
+.stage-visualization-note{position:absolute;top:85px;right:55px;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#58645b;z-index:7;max-width:180px;line-height:1.5;text-align:right}
+.after-immersion{padding:28px 0;border-bottom:1px solid #303a30}.after-immersion .band-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.after-immersion span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;line-height:1.6}
+.after-immersion span:nth-child(2){text-align:center}.after-immersion span:last-child{text-align:right}
+/* Reveal only when visible; original research structure remains entirely readable. */
+.section-top,.project,.other,.topic,.about>*{transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.has-reveal .section-top:not(.is-visible),.has-reveal .project:not(.is-visible),.has-reveal .other:not(.is-visible),.has-reveal .topic:not(.is-visible),.has-reveal .about>*:not(.is-visible){opacity:.01;transform:translateY(38px)}
+.project figure{isolation:isolate}
+.project figure:after{content:"";pointer-events:none;position:absolute;inset:0;border:1px solid #c4f75c00;transition:border-color .28s}
+.project:hover figure:after{border-color:#c4f75c6e}
+.project figure svg.visual{transition:transform .85s cubic-bezier(.2,.8,.2,1)}
+.project:hover figure svg.visual{transform:scale(1.055) translateY(-3px)}
+.project:hover h3{color:#25472f}
+.inline-link{transition:letter-spacing .2s ease,color .2s ease}.inline-link:hover{letter-spacing:.11em;color:#426a2f}
+.immersive-end{position:absolute;bottom:10svh;left:50%;transform:translateX(-50%);z-index:6;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#4c574e;text-align:center;pointer-events:none;opacity:.5}
+@media(max-width:1100px){.narrative h1{font-size:clamp(55px,7.8vw,90px)}.stage-left{min-height:490px}.perception-art{min-height:400px}}
+@media(max-width:760px){
+  .nav-shell .nav-inner{height:60px;min-height:60px;display:flex}.nav-shell .navlinks{display:flex;gap:13px;padding:0}.nav-shell .navlinks a{font-size:9px}.nav-shell .navlinks a:nth-child(n+3){display:none}.nav-shell .brand{font-size:17px}.nav-shell .right-note{display:none}
+  .immersive{height:315svh}.stage-grid{grid-template-columns:1fr;grid-template-rows:47% 53%;gap:0;padding-top:68px;padding-bottom:76px}
+  .stage-left{grid-row:1;min-height:0;height:100%;align-self:start}.narrative{justify-content:flex-start;padding-top:4svh}.narrative .overline{margin-bottom:19px;font-size:10px}.narrative h1{font-size:clamp(58px,11.8vw,96px);line-height:.91;margin-bottom:17px}.narrative p{font-size:12.6px;line-height:1.62;max-width:440px}.narrative .mini{margin-top:12px;font-size:9px}
+  .perception-art{grid-row:2;min-height:0;height:100%;width:min(100%,550px);margin:auto}.art-viewer-note{bottom:16px;font-size:8px}.art-corner{font-size:8px;top:4px}.art-corner.right{display:none}
+  .stage-meta{bottom:12px}.scene-selector{gap:5px;width:100%;flex-wrap:nowrap}.scene-selector button{font-size:8px;padding:10px 6px;flex:1;white-space:nowrap}.stage-instruction{display:none}.readout{top:68px;left:auto;right:22px;transform:none;font-size:8px}.scroll-track,.stage-visualization-note{display:none}.after-immersion .band-inner{grid-template-columns:1fr 1fr}.after-immersion span:nth-child(2){text-align:right}.after-immersion span:last-child{display:none}
+}
+@media(max-width:395px){.narrative h1{font-size:clamp(52px,12vw,70px)}.narrative p{font-size:12px}.nav-shell .navlinks a:last-child{display:none}.scene-selector button{padding:9px 5px}}
+@media(prefers-reduced-motion:reduce){#perception-canvas{animation:none}html{scroll-behavior:auto}.narrative,.section-top,.project,.other,.topic,.about>*{transition:none!important}.has-reveal .section-top:not(.is-visible),.has-reveal .project:not(.is-visible),.has-reveal .other:not(.is-visible),.has-reveal .topic:not(.is-visible),.has-reveal .about>*:not(.is-visible){opacity:1;transform:none}}
+
+/* Personal academic identity; keep Perception Atlas as the internal concept only. */
+.nav-shell .brand{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;white-space:normal;line-height:1.05;letter-spacing:0}
+.nav-shell .brand-main{font-size:22px;font-weight:750;letter-spacing:-.05em;color:#171d1c}
+.nav-shell .brand-sub{font-size:9px;line-height:1.25;letter-spacing:.045em;color:#56615a;font-weight:550}
+@media(max-width:760px){
+ .nav-shell .nav-inner{gap:9px}
+ .nav-shell .brand{max-width:215px;flex:1;min-width:0}
+ .nav-shell .brand-main{font-size:18px}
+ .nav-shell .brand-sub{font-size:8px;line-height:1.22;letter-spacing:0;max-width:212px}
+ .nav-shell .navlinks{gap:9px;flex-shrink:0}
+}
+@media(max-width:380px){.nav-shell .brand{max-width:192px}.nav-shell .brand-sub{font-size:7.5px}.nav-shell .navlinks a{font-size:8px}}
+</style></head><body>
+<header class="nav-shell"><div class="nav-inner wrap">
+<a class="brand" href="#top" aria-label="Jieru Dong — back to top"><span class="brand-main">Jieru Dong</span><span class="brand-sub">Spatial Computing · Human Perception · Interactive AI</span></a>
+<nav class="navlinks" aria-label="Site navigation"><a href="#top">Experience</a><a href="#work">Work</a><a href="#research">Research</a><a href="#about">About</a></nav>
+<div class="right-note">Jieru Dong · Lund University</div></div></header>
+<main id="top">
+<section class="immersive" id="experience" aria-label="Interactive research sculpture: scroll to morph between perception, vision and space">
+ <div class="immersive-stage">
+  <div class="readout"><span class="indicator"></span><span>LIVE / PERCEPTION FIELD</span></div>
+  <div class="stage-visualization-note">Conceptual generative drawing<br>Not experimental data</div>
+  <div class="stage-grid wrap">
+   <div class="stage-left" aria-live="off">
+    <div class="narrative active" data-scene="0"><div class="overline">01 / HUMAN PERCEPTION</div><h1>To <em>perceive.</em></h1><p>I'm <strong>Jieru Dong</strong>. I study how we see, interpret and interact with digital information — from visual comfort in XR to the subtle mechanics of attention.</p><div class="mini"><span></span>Feel / notice / understand</div></div>
+    <div class="narrative" data-scene="1"><div class="overline">02 / COMPUTER VISION</div><h1>To <em>understand.</em></h1><p>What changes when a machine learns to see? My work explores visual understanding, image enhancement and accessible systems that translate visual signals into useful meaning.</p><div class="mini"><span></span>Sense / interpret / explain</div></div>
+    <div class="narrative" data-scene="2"><div class="overline">03 / SPATIAL COMPUTING</div><h1>To <em>situate.</em></h1><p>Through <strong>XR and spatial interfaces</strong>, I investigate how information can become part of the physical world — where distance, depth and context shape interaction.</p><div class="mini"><span></span>Locate / navigate / interact</div></div>
+   </div>
+   <div class="perception-art" id="art-surface" tabindex="0" role="group" aria-label="Interactive three-dimensional sculpture. Drag to rotate the viewpoint; scroll to transform the sculpture.">
+    <canvas id="perception-canvas" aria-hidden="true"></canvas>
+    <div class="art-corner"><span class="green"></span>Fig. 01 / Procedural form<br>Body / Data / Space</div>
+    <div class="art-corner right">Pointer responsive<br>Live geometry / real-time</div>
+    <div class="art-viewer-note" id="gesture-note">Drag to rotate · Scroll to transform</div>
+    <div class="art-cursor" id="art-cursor"></div>
+   </div>
+  </div>
+  <div class="stage-meta wrap"><div class="scene-selector" aria-label="Choose visualization phase"><button data-go="0" class="active" type="button" aria-pressed="true">01 / Perception</button><button data-go="1" type="button" aria-pressed="false">02 / Vision</button><button data-go="2" type="button" aria-pressed="false">03 / Space</button></div><div class="stage-instruction">Scroll ↓ to transform<br><span id="phase-progress">01 / 03</span></div></div>
+  <div class="scroll-track" aria-hidden="true"><i id="track-progress"></i></div>
+ </div>
+</section>
+<div class="after-immersion"><div class="wrap band-inner"><span>From sensing, to computation, to interaction.</span><span>Original geometry / no external dependencies</span><span>Scroll to read the research archive ↓</span></div></div>
+<section id="work" class="section"><div class="wrap"><div class="section-top"><span class="section-id">01 / Selected research</span><h2>Research you can <em>look into.</em></h2><p class="section-intro">A selection of research-driven prototypes. The visual studies below are editorial diagrams, not results; real project footage and photographs will replace them in the finished site.</p></div>
+<article class="project"><figure><span class="vis-label">01 / Spatial monitoring</span><svg class="visual" viewBox="0 0 800 510" aria-hidden="true"><defs><radialGradient id="c1"><stop stop-color="#7d9289"/><stop offset="1" stop-color="#17211f"/></radialGradient></defs><rect width="800" height="510" fill="url(#c1)"/><g fill="none" stroke="#acc5b7" stroke-width="1" opacity=".6"><path d="M80 420 420 90 740 420M150 420 465 138 690 420M220 420 510 183 645 420M90 380H720M130 335H660M176 290H606"/><circle cx="330" cy="250" r="85"/><circle cx="560" cy="290" r="63"/><circle cx="560" cy="290" r="35"/></g><g fill="#c4f75c"><circle cx="330" cy="250" r="11"/><circle cx="560" cy="290" r="7"/></g><g fill="#eef5e9" font-family="monospace" font-size="14"><text x="358" y="226">CAM 02</text><text x="582" y="267">CAM 03</text><text x="358" y="246" font-size="12" fill="#c4f75c">MEMORY HIGH</text></g></svg><span class="vis-caption">Conceptual spatial diagram<br>Replace with actual XR capture</span></figure><div class="project-body"><span class="project-id">2026 / Quest 3 / Collaborative course project</span><h3>Axis XR<br>Monitoring</h3><p>Investigating how device health and physical camera location can be represented in extended reality. The work explores whether spatial hierarchy and situated interaction can reduce the effort of identifying problematic devices.</p><div class="tags"><span>XR Interface</span><span>Meta Quest 3</span><span>Spatial UX</span><span>Unity</span></div><a class="inline-link" href="https://github.com/DonGCoco/Axis-XR-Monitoring" target="_blank" rel="noopener">Project repository ↗</a></div></article>
+<article class="project"><figure><span class="vis-label">02 / Human perception</span><svg class="visual" viewBox="0 0 800 510" aria-hidden="true"><rect width="800" height="510" fill="#384844"/><g fill="none" stroke="#b2c8bc" stroke-width="1.5"><path d="M70 250Q200 100 330 250T590 250T850 250"/><path d="M70 275Q200 125 330 275T590 275T850 275" opacity=".55"/><path d="M70 300Q200 150 330 300T590 300T850 300" opacity=".3"/><path d="M400 60V455M110 370H690" stroke-dasharray="6 7" opacity=".55"/><circle cx="400" cy="258" r="98"/><circle cx="400" cy="258" r="58" opacity=".5"/></g><g fill="#c4f75c"><circle cx="400" cy="258" r="8"/></g><g fill="#e7f1e9" font-family="monospace" font-size="13"><text x="52" y="55">FOCAL DEPTH</text><text x="523" y="450">PERCEPTUAL RESPONSE</text></g></svg><span class="vis-caption">Conceptual depth diagram<br>Replace with lab experiment images</span></figure><div class="project-body"><span class="project-id">2026 / Magic Leap 2 / Collaborative study</span><h3>Vergence–Accommodation<br>Conflict in XR</h3><p>A study framework examining virtual depth, visual comfort, and interaction. The focus is on the relationship between stereoscopic presentation and perceptual experience.</p><div class="tags"><span>Human Factors</span><span>Depth</span><span>Magic Leap 2</span><span>Experimental Design</span></div><a class="inline-link" href="https://github.com/DonGCoco/VAC" target="_blank" rel="noopener">Research repository ↗</a></div></article>
+<article class="project"><figure><span class="vis-label">03 / Multimodal accessibility</span><svg class="visual" viewBox="0 0 800 510" aria-hidden="true"><rect width="800" height="510" fill="#b9c2b3"/><rect x="100" y="97" width="245" height="300" fill="#27332d"/><rect x="117" y="113" width="211" height="265" fill="#667765"/><path d="M178 296Q226 183 280 294" fill="none" stroke="#c4f75c" stroke-width="5"/><rect x="452" y="145" width="220" height="240" fill="#e2e7dc"/><g fill="#34463a"><rect x="474" y="166" width="130" height="9"/><rect x="474" y="188" width="174" height="5"/><rect x="474" y="205" width="153" height="5"/><rect x="474" y="222" width="165" height="5"/></g><path d="M369 228H434M423 218L434 228 423 238" stroke="#23402d" stroke-width="2" fill="none"/><g fill="#dbe6d4" font-family="monospace" font-size="13"><text x="118" y="365">IMAGE</text></g><text x="475" y="351" font-family="monospace" fill="#24362b" font-size="13">DESCRIPTION + SPEECH</text></svg><span class="vis-caption" style="color:#23362a">Conceptual processing diagram<br>Replace with real system screenshots</span></figure><div class="project-body"><span class="project-id">2025 / Ritsumeikan / BEng thesis</span><h3>Low-Vision<br>Shopping Assistance</h3><p>An accessibility-focused system combining image restoration, vision–language models, and speech interaction to support users in understanding product information in everyday shopping.</p><div class="tags"><span>Computer Vision</span><span>VLM</span><span>DeblurGAN</span><span>Accessibility</span></div><a class="inline-link" href="https://github.com/DonGCoco/low-vision-shopping-assistance" target="_blank" rel="noopener">Code and thesis ↗</a></div></article>
+<div class="other-projects"><article class="other"><div><span class="count">04 / Mobile AR</span><h3>AR Tarot<br>Perspective</h3><p>Viewpoint-dependent mobile AR interaction and spatial narrative.</p></div><a href="https://github.com/DonGCoco/AR-Tarot-Perspective" target="_blank" rel="noopener">View project ↗</a></article><article class="other"><div><span class="count">05 / Immersive environments</span><h3>Anomalist<br>VR Experience</h3><p>A collaborative interactive project on memory, dreams, and shifting realities.</p></div><a href="https://github.com/DonGCoco/vr-dream-game" target="_blank" rel="noopener">View project ↗</a></article><article class="other"><div><span class="count">06 / Gesture computing</span><h3>WebAR Gesture<br>Prototypes</h3><p>Browser-based camera tracking experiments with hands and faces.</p></div><a href="https://github.com/DonGCoco/WebAR-Gesture-Prototypes" target="_blank" rel="noopener">View project ↗</a></article></div>
+</div></section>
+<section id="research" class="section research"><div class="wrap"><div class="section-top"><span class="section-id">02 / Research directions</span><h2>Technology <em>through</em> perception.</h2><p class="section-intro">The central thread in my work is not a single device or algorithm, but what happens when computational systems encounter human senses, decisions, and physical space.</p></div><div class="topics"><article class="topic"><small>01 / XR</small><h3>Spatial interfaces</h3><p>Interfaces situated in the physical world, not confined to a flat screen.</p></article><article class="topic"><small>02 / Perception</small><h3>Human factors</h3><p>Visual comfort, depth, attention, and how perception shapes experience.</p></article><article class="topic"><small>03 / Vision</small><h3>Computer vision</h3><p>Visual understanding and image enhancement that make digital systems more aware of context.</p></article><article class="topic"><small>04 / Human–AI</small><h3>Meaningful control</h3><p>Interactions that remain legible, useful, and under human direction.</p></article></div></div></section>
+<section id="about" class="section"><div class="wrap"><div class="section-top"><span class="section-id">03 / Background</span><h2>A little <em>context.</em></h2></div><div class="about"><div><h3>From visual information<br>to lived interaction.</h3><p>I’m Jieru Dong, currently studying Virtual Reality and Augmented Reality at Lund University. My background in Information Science and Engineering and my ongoing work in XR have shaped an interest in how technical systems are perceived, understood, and used.</p><p>The website is deliberately structured as a readable research archive. This prototype uses abstract visual diagrams for art direction; the finished version will use genuine project documentation and clearly distinguish research in progress from published work.</p></div><dl><div><dt>2025–present</dt><dd>Lund University, Sweden<br>MSc · Virtual Reality and Augmented Reality</dd></div><div><dt>2021–2025</dt><dd>Ritsumeikan University, Japan<br>BEng · Information Science and Engineering</dd></div><div><dt>Focus</dt><dd>XR · HCI · Human Perception · Computer Vision · Human-Centered AI</dd></div><div><dt>Methods</dt><dd>Interactive prototyping · Unity · Experimental design · Multimodal systems</dd></div><div><dt>Outputs</dt><dd>Course research prototypes and undergraduate thesis — not presented as peer-reviewed publications.</dd></div></dl></div></div></section>
+<section class="closing" id="contact"><div class="wrap"><div class="closing-inner"><h2>Let’s make<br><em>meaning.</em></h2><div><p>Open to conversations about research, creative technology, XR perception, and human-centered intelligent interfaces. This site is a design preview; a verified email address and CV download can be added later.</p><a class="action primary" href="https://github.com/DonGCoco" target="_blank" rel="noopener">Contact via GitHub ↗</a></div></div><footer class="footer"><span>© <span id="year">2026</span> Jieru Dong</span><span>Research meets editorial design</span><a href="#top">Back to top ↑</a></footer></div></section>
+</main>
+<script>
+(() => {
+ 'use strict';
+ const scene=document.getElementById('experience');
+ const surface=document.getElementById('art-surface');
+ const canvas=document.getElementById('perception-canvas');
+ const narratives=[...document.querySelectorAll('.narrative')];
+ const buttons=[...document.querySelectorAll('[data-go]')];
+ const counter=document.getElementById('phase-progress');
+ const progressMarker=document.getElementById('track-progress');
+ const cursor=document.getElementById('art-cursor');
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+ const compact=()=>window.innerWidth<760;
+ let p=0, phase=0, drag=false, spin=0, tilt=0, mouseX=0,mouseY=0, lastX=0,lastY=0, prev=0;
+ let w=0,h=0,dpr=1;
+ const rad=Math.PI/180;
+ const smooth=(a,b,t)=>a+(b-a)*t;
+ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+ const cubic=t=>t*t*(3-2*t);
+ const updateScroll=()=>{
+   const rect=scene.getBoundingClientRect();
+   const span=Math.max(1,scene.offsetHeight-window.innerHeight);
+   p=clamp((-rect.top)/span,0,1);
+   // Three movement chapters. Scroll progress is continuous, not a slideshow.
+   const next=p<.31?0:p<.72?1:2;
+   if(next!==phase){phase=next;narratives.forEach((n,i)=>n.classList.toggle('active',i===phase));buttons.forEach((b,i)=>{b.classList.toggle('active',i===phase);b.setAttribute('aria-pressed',String(i===phase))})}
+   counter.textContent=`0${phase+1} / 03`;
+   progressMarker.style.transform=`translateY(${(p*2*100).toFixed(1)}%)`;
+ };
+ let scrollPending=false;
+ window.addEventListener('scroll',()=>{if(!scrollPending){scrollPending=true;requestAnimationFrame(()=>{updateScroll();scrollPending=false})}},{passive:true});
+ window.addEventListener('resize',()=>{resize();updateScroll()},{passive:true});
+ buttons.forEach((b,i)=>b.addEventListener('click',()=>{
+   const span=Math.max(0,scene.offsetHeight-window.innerHeight);
+   const dest=scene.getBoundingClientRect().top+window.scrollY+span*[.065,.51,.94][i];
+   window.scrollTo({top:dest,behavior:reduce.matches?'instant':'smooth'});
+ }));
+ const pointer=(ev)=>{const r=surface.getBoundingClientRect();mouseX=clamp((ev.clientX-r.left)/r.width*2-1,-1,1);mouseY=clamp(1-(ev.clientY-r.top)/r.height*2,-1,1);cursor.style.left=`${ev.clientX-r.left}px`;cursor.style.top=`${ev.clientY-r.top}px`};
+ surface.addEventListener('pointermove',ev=>{pointer(ev);if(drag){spin+=(ev.clientX-lastX)*.006;tilt=clamp(tilt+(ev.clientY-lastY)*.003,-.95,.95);lastX=ev.clientX;lastY=ev.clientY}}, {passive:true});
+ surface.addEventListener('pointerdown',ev=>{drag=true;lastX=ev.clientX;lastY=ev.clientY;surface.classList.add('dragging');surface.setPointerCapture?.(ev.pointerId);pointer(ev)});
+ const done=()=>{drag=false;surface.classList.remove('dragging')};
+ surface.addEventListener('pointerup',done);surface.addEventListener('pointercancel',done);surface.addEventListener('lostpointercapture',done);
+ surface.addEventListener('pointerleave',()=>{if(!drag){mouseX=0;mouseY=0}});
+ surface.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){spin+=(e.key==='ArrowLeft'?-.16:.16);e.preventDefault()}if(e.key==='ArrowUp'||e.key==='ArrowDown'){tilt=clamp(tilt+(e.key==='ArrowUp'?.1:-.1),-.95,.95);e.preventDefault()}});
+
+ const gl=canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:true,preserveDrawingBuffer:false,powerPreference:'high-performance'});
+ const count=compact()?610:1000;
+ const steps=compact()?23:31;
+ const nverts=count*(steps-1)*2;
+ const raw=new Float32Array(nverts*11);
+ // 3D modes are generated from mathematical surfaces; no recorded animation or asset is needed.
+ function hash(a){const x=Math.sin(a*127.1+43.7)*43758.5453;return x-Math.floor(x)}
+ function bust(j,t){
+   const th=j*2.39996323+.2*Math.sin(j*1.13);
+   const y=1.55-2.85*t;
+   let rx,rz;
+   if(y>-.24){const q=clamp((y-.57)/1.02,-1,1);rx=.66*Math.sqrt(Math.max(.018,1-q*q));rz=.52*Math.sqrt(Math.max(.018,1-q*q))}
+   else if(y>-.58){rx=.24;rz=.24}
+   else {rx=.24+(-.58-y)*1.68;rz=.25+(-.58-y)*.6}
+   const wav=.04*Math.sin(t*28+j*.73)+.025*Math.sin(t*53+j*.31);
+   // Slight protrusion for face, asymmetry in silhouette; neck joins shoulders.
+   const nose=.19*Math.exp(-Math.pow((y-.59)/.125,2))*Math.pow(Math.max(0,Math.cos(th)),9);
+   const x=(rx+wav)*Math.cos(th)+nose+.032*Math.cos(t*19+j);
+   const z=(rz+.025*Math.sin(t*24+j)) * Math.sin(th)+.06*Math.cos(j*.47+t*8);
+   return [x,y,z];
+ }
+ function eye(j,t){
+   const phase=j*.02194,ring=.13+1.4*Math.pow(hash(j*.119),.78);
+   const arc=t*Math.PI*2*(.5+hash(j*1.73)*.6);
+   const a=phase+arc+.3*Math.sin(t*6+j);
+   const iris=ring*(.9+.12*Math.sin(10*a+t*4));
+   return [iris*Math.cos(a)*1.15,iris*Math.sin(a)*.75,.28*Math.sin(5*a+j*.04)+(hash(j*.333)-.5)*1.3];
+ }
+ function space(j,t){
+   const k=j%3;
+   const centers=[[-.98,.38,-.18],[.62,.86,.2],[.84,-.84,-.4]];
+   const theta=j*.113+t*(1.1+hash(j*.91)*2.1);
+   const phi=t*6.283+(j%47)*.035;
+   const r=.37+.27*hash(j*.731);
+   const q=centers[k];
+   // Volumetric spirograph trajectory around three physical-space camera anchors.
+   return [q[0]+r*Math.sin(theta)*Math.cos(phi),q[1]+r*Math.sin(theta)*Math.sin(phi),q[2]+r*Math.cos(theta)+.17*Math.sin(phi*2+j)];
+ }
+ let pos=0;
+ function vertex(j,t){
+   const v0=bust(j,t),v1=eye(j,t),v2=space(j,t);
+   const depth=hash(j*.87);
+   const alpha=.19+.60*hash(j*.641);
+   raw.set([...v0,...v1,...v2,depth,alpha],pos);pos+=11;
+ }
+ for(let j=0;j<count;j++)for(let s=0;s<steps-1;s++){const t=s/(steps-1);vertex(j,t);vertex(j,(s+1)/(steps-1))}
+ let prog=null,attrs=[],uniforms={},buf=null;
+ const vert=`
+ precision highp float;
+ attribute vec3 aA;attribute vec3 aB;attribute vec3 aC;attribute float aDepth;attribute float aAlpha;
+ uniform float uScroll;uniform float uTime;uniform vec2 uMouse;uniform vec2 uView;uniform vec2 uOrbit;uniform float uReduce;
+ varying float vShade;varying float vAlpha;varying float vGreen;
+ float ease(float t){return t*t*(3.0-2.0*t);}
+ void main(){
+   float s=clamp(uScroll,0.0,1.0);
+   float ab=ease(smoothstep(.06,.47,s));
+   float bc=ease(smoothstep(.54,.93,s));
+   vec3 pt=mix(mix(aA,aB,ab),aC,bc);
+   float wave=sin(uTime*.85+aDepth*45.0+pt.y*6.0)*.055*uReduce;
+   pt.x+=wave;pt.z+=cos(uTime*.65+pt.x*7.0+aDepth*55.0)*.045*uReduce;
+   float ry=.30*sin(uTime*.35)*uReduce+uOrbit.x+uMouse.x*.19;
+   float rx=uOrbit.y+uMouse.y*.10;
+   float c=cos(ry),si=sin(ry);pt=vec3(pt.x*c+pt.z*si,pt.y,-pt.x*si+pt.z*c);
+   c=cos(rx);si=sin(rx);pt=vec3(pt.x,pt.y*c-pt.z*si,pt.y*si+pt.z*c);
+   // Soft pointer repulsion is native in the vertex shader; proximity changes geometry.
+   vec2 probe=vec2(pt.x*.6,pt.y*.65)-uMouse*.48;
+   float proximity=exp(-dot(probe,probe)*12.0);
+   pt.xy+=normalize(probe+vec2(.0001))*.095*proximity*uReduce;
+   float camera=4.65;
+   float perspective=camera/(camera-pt.z*.6);
+   vec2 viewport=vec2(1.42,1.62);
+   vec2 outpos=pt.xy*perspective/viewport;
+   // Move visual slightly to the right and up to balance the text.
+   outpos+=vec2(.08,.02);
+   gl_Position=vec4(outpos,0.0,1.0);
+   vShade=clamp(.35+pt.z*.32+aDepth*.4,.15,1.0);
+   vAlpha=aAlpha;
+   vGreen=step(.965,aDepth)+.5*step(.985,1.0-aDepth);
+ }
+ `;
+ const frag=`
+ precision mediump float;
+ varying float vShade;varying float vAlpha;varying float vGreen;
+ void main(){
+   vec3 graphite=vec3(.065,.10,.081);
+   vec3 lime=vec3(.56,.78,.13);
+   float green=clamp(vGreen,0.0,1.0);
+   vec3 col=mix(graphite,lime,green*.72);
+   gl_FragColor=vec4(col,vAlpha*(.45+.48*vShade));
+ }
+ `;
+ const compile=(type,src)=>{const sh=gl.createShader(type);gl.shaderSource(sh,src);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));return sh};
+ try{
+ if(gl){
+   prog=gl.createProgram();gl.attachShader(prog,compile(gl.VERTEX_SHADER,vert));gl.attachShader(prog,compile(gl.FRAGMENT_SHADER,frag));gl.linkProgram(prog);
+   if(!gl.getProgramParameter(prog,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(prog));
+   gl.useProgram(prog);buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,raw,gl.STATIC_DRAW);
+   const stride=44;
+   [['aA',3,0],['aB',3,12],['aC',3,24],['aDepth',1,36],['aAlpha',1,40]].forEach(([name,size,offset])=>{const loc=gl.getAttribLocation(prog,name);if(loc>=0){gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,size,gl.FLOAT,false,stride,offset)}});
+   ['uScroll','uTime','uMouse','uView','uOrbit','uReduce'].forEach(n=>uniforms[n]=gl.getUniformLocation(prog,n));
+   gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
+ }
+ }catch(err){console.warn('WebGL unavailable; using 2D fallback',err);prog=null}
+ const ctx=!prog?canvas.getContext('2d'):null;
+ function resize(){const box=canvas.getBoundingClientRect();w=box.width;h=box.height;dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.max(1,Math.floor(w*dpr));canvas.height=Math.max(1,Math.floor(h*dpr));if(gl&&prog)gl.viewport(0,0,canvas.width,canvas.height)}
+ // Canvas fallback keeps the morph visible on devices without WebGL.
+ function fallback(time){if(!ctx)return;ctx.clearRect(0,0,canvas.width,canvas.height);ctx.save();ctx.scale(dpr,dpr);const ab=cubic(clamp((p-.06)/.41,0,1)),bc=cubic(clamp((p-.54)/.39,0,1));ctx.strokeStyle='#18231d88';ctx.lineWidth=.7;for(let j=0;j<Math.min(200,count);j++){ctx.beginPath();for(let i=0;i<steps;i++){const t=i/(steps-1),a=bust(j,t),b=eye(j,t),c=space(j,t);let x=smooth(smooth(a[0],b[0],ab),c[0],bc),y=smooth(smooth(a[1],b[1],ab),c[1],bc);x=(x*Math.cos(spin)-a[2]*Math.sin(spin))*.55;const X=w*(.54+x*.45),Y=h*(.51-y*.28);i?ctx.lineTo(X,Y):ctx.moveTo(X,Y)}ctx.stroke()}ctx.restore()}
+ let start=performance.now(),lastFrame=0;
+ function frame(now){
+  if(document.hidden){requestAnimationFrame(frame);return}
+  // fixed ~30FPS on slower devices; keep pointer responsive, stage value read every frame.
+  const interval=compact()?30:17;
+  if(now-lastFrame<interval&&!reduce.matches){requestAnimationFrame(frame);return}
+  lastFrame=now;
+  if(gl&&prog){
+   gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.useProgram(prog);
+   gl.uniform1f(uniforms.uScroll,p);gl.uniform1f(uniforms.uTime,(now-start)/1000);gl.uniform2f(uniforms.uMouse,mouseX,mouseY);gl.uniform2f(uniforms.uView,w,h);gl.uniform2f(uniforms.uOrbit,spin,tilt);gl.uniform1f(uniforms.uReduce,reduce.matches?0:1);
+   gl.drawArrays(gl.LINES,0,nverts);
+  }else fallback(now);
+  requestAnimationFrame(frame);
+ }
+ resize();updateScroll();requestAnimationFrame(frame);
+ // Interaction feedback when entering, without fake claims of user data.
+ const note=document.getElementById('gesture-note');
+ surface.addEventListener('pointerdown',()=>note.textContent='ROTATING / RELEASE TO LET GO');
+ surface.addEventListener('pointerup',()=>note.textContent='DRAG TO ROTATE · SCROLL TO TRANSFORM');
+ surface.addEventListener('pointercancel',()=>note.textContent='DRAG TO ROTATE · SCROLL TO TRANSFORM');
+ // Intersection Observer prevents offscreen content from cluttering the first screen.
+ const io=new IntersectionObserver(entries=>{for(const e of entries){if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target)}}},{threshold:.09,rootMargin:'0px 0px 30px 0px'});
+ document.querySelectorAll('.section-top,.project,.other,.topic,.about>*').forEach((e)=>io.observe(e));
+ if(!reduce.matches)document.body.classList.add('has-reveal');
+ document.getElementById('year').textContent=new Date().getFullYear();
+})();
+</script>
+</body></html>
