@@ -1,120 +1,44 @@
-[![Handwritten photo clock — small sketchy numerals with subtly moving cloud preview](swan-photo-clock/assets/readme-v5-animated.svg)](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=5)
+# Jieru Dong
 
-**[▶ OPEN THE LIVE CLOCK — your device's current time ↗](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=5)**
+**MSc Student · Virtual Reality and Augmented Reality · Lund University, Sweden**  
+*XR · Spatial Computing · Human Perception · Human-Centered AI*
 
-**[View my portfolio ↗](https://dongcoco.github.io/DonGCoco/)**  ·  XR / Spatial Computing / Human-Centered AI
+**[Academic Homepage ↗](https://dongcoco.github.io/DonGCoco/)** · [Research & Projects](https://dongcoco.github.io/DonGCoco/#projects) · [BEng Thesis](https://github.com/DonGCoco/low-vision-shopping-assistance)
 
-# Hi, I'm Jieru Dong 👋
+## About Me
 
-### XR · Spatial Computing · Human-Centered AI
+I am an MSc student in **Virtual Reality and Augmented Reality at Lund University**, with a BEng in **Information Science and Engineering from Ritsumeikan University**. My interests connect extended reality, human perception, computer vision, and human-centered AI. I explore how intelligent systems can use physical context to support more natural and understandable spatial interaction.
 
-I am an MSc student in **Virtual Reality and Augmented Reality at Lund University**, with a background in **Information Science and Engineering**.
+## Research Interests
 
-My interests sit at the intersection of **extended reality, human perception, multimodal AI, and interactive systems**. I am particularly interested in how intelligent systems can understand human behaviour, perception, and physical context, and use that understanding to support more natural interaction between people, digital information, and the physical world.
+- **XR & Spatial Computing** — Spatial user interfaces, mixed reality, and context-aware interaction.
+- **Human Perception in XR** — Visual comfort, depth perception, and human factors.
+- **Human–AI Interaction** — Understandable, controllable, and usable intelligent interfaces.
+- **Computer Vision & Multimodal AI** — Visual understanding, image enhancement, and accessibility.
 
----
+## Selected Research & Projects
 
-## 🔬 Research Interests
+| Project | Focus |
+|:--|:--|
+| [Axis XR Monitoring](https://github.com/DonGCoco/Axis-XR-Monitoring) | XR camera health visualization and device localization (ongoing prototype) |
+| [Vergence–Accommodation Conflict](https://github.com/DonGCoco/VAC) | Magic Leap 2 study framework for visual comfort and depth perception |
+| [Low-Vision Shopping Assistance](https://github.com/DonGCoco/low-vision-shopping-assistance) | BEng thesis: image enhancement, vision–language models, and speech |
+| [AR Tarot Perspective](https://github.com/DonGCoco/AR-Tarot-Perspective) | Viewpoint-dependent AR interaction |
+| [WebAR Gesture Prototypes](https://github.com/DonGCoco/WebAR-Gesture-Prototypes) | Hand and face tracking for browser-based interactions |
 
-### Extended Reality & Spatial Computing
+## Education
 
-I am interested in how interaction changes when interfaces move beyond traditional 2D screens and become embedded in physical and virtual space.
+- **Lund University** — MSc, Virtual Reality and Augmented Reality · 2025–present
+- **Ritsumeikan University** — BEng, Information Science and Engineering · 2021–2025
 
-- Virtual Reality and Augmented Reality
-- Spatial user interfaces
-- Mixed Reality and passthrough interaction
-- Hand, gaze, and controller-based interaction
-- Context-aware spatial interfaces
-- Interaction design for immersive systems
+## Creative Experiment · Time, Collected
 
-### Human Perception in XR
+A twelve-photo editorial collage clock with moving clouds and handwritten markers. The live page reads each visitor's local device time.
 
-Immersive systems depend not only on rendering and hardware performance, but also on how people perceive and process visual information.
+[![Moving photographic clock](swan-photo-clock/assets/readme-motion-v4.gif)](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=5)
 
-- Visual comfort in head-mounted displays
-- Vergence–accommodation conflict
-- Depth perception and visual attention
-- Cognitive load in immersive interfaces
-- Quality of Experience (QoE)
-- Human factors in XR
-
-### Human-Centered & Multimodal AI
-
-I am interested in AI systems designed around human needs, behaviour, and decision-making rather than AI as an isolated technical component.
-
-- Human-AI interaction
-- Vision-language models
-- Multimodal interaction
-- AI-assisted decision making
-- Trust, uncertainty, and human agency
-- AI for accessibility
-
-### Computer Vision & Visual Computing
-
-Computer vision provides an important bridge between intelligent systems and the physical world.
-
-- Image processing and enhancement
-- Visual recognition
-- Motion and sensor data
-- Human-centred computer vision
-- Real-time visual systems
-- Computer graphics and visual perception
+**[Open the live photo clock ↗](https://dongcoco.github.io/DonGCoco/swan-photo-clock/live.html?v=5)**
 
 ---
 
-## 🧠 Research Direction
-
-A question that connects much of what I am exploring is:
-
-> **How can intelligent systems better understand human perception and physical context to support natural spatial interaction?**
-
-I think about this through three connected layers:
-
-**Human Perception → Intelligent Systems → Spatial Interfaces**
-
-Rather than focusing only on individual models or technologies, I am interested in complete interactive systems where **sensing, perception, computation, and interaction** work together.
-
-Current questions I am exploring include how spatial interfaces can present complex information without increasing cognitive load, how XR systems can account for perceptual limitations, how multimodal AI can handle imperfect real-world inputs, and how intelligent systems can support human decisions without removing human agency.
-
----
-
-## 🛠 Technical Background
-
-**Programming**  
-`Python` · `C++` · `C#` · `Java` · `MATLAB` · `SQL`
-
-**XR & Spatial Computing**  
-`Unity` · `OpenXR` · `XR Interaction Toolkit` · `Meta XR` · `AR Foundation` · `ARKit`
-
-**AI & Computer Vision**  
-`PyTorch` · `OpenCV` · `Vision-Language Models` · `Image Processing` · `Multimodal AI`
-
-**Design & Visual Computing**  
-`Figma` · `Blender` · `Computer Graphics` · `Shader Programming`
-
-**Research & Analysis**  
-`Experimental Design` · `Usability Testing` · `Quantitative Analysis` · `Qualitative Analysis`
-
----
-
-## 🎓 Education
-
-**Lund University**  
-MSc in Virtual Reality and Augmented Reality · Sweden · 2025–Present
-
-**Ritsumeikan University**  
-BEng in Information Science and Engineering · Japan · 2021–2025
-
----
-
-## 🌍 Languages
-
-Chinese · Native  
-Japanese · JLPT N1  
-English · Professional working proficiency
-
----
-
-## 📫 Interests & Collaboration
-
-I am open to research and technical opportunities in **XR, spatial computing, human-computer interaction, multimodal AI, computer vision, and human-centered intelligent systems**.
+I welcome research discussions and collaborations related to XR, computer vision, spatial interfaces, and human-centered AI.
