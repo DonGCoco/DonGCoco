@@ -36,13 +36,13 @@ body{background:#d8d7d0}
 .immersive-stage:before{content:"";position:absolute;z-index:0;inset:0;pointer-events:none;opacity:.44;background:linear-gradient(90deg,transparent 0%,transparent 48%,#b9c2b46b 100%),linear-gradient(90deg,#6372631e 1px, transparent 1px),linear-gradient(#63726318 1px,transparent 1px);background-size:auto,84px 84px,84px 84px;mask-image:linear-gradient(90deg,transparent 12%,#000 32%,#000 100%)}
 .immersive-stage:after{content:"";position:absolute;inset:18px;border:1px solid #5b685f2f;pointer-events:none;z-index:1;box-shadow:inset 0 0 0 1px #eef2e920}
 .stage-grid{height:100%;position:relative;z-index:1;padding:0;width:100%;max-width:none;margin:0}
-.stage-left{position:absolute;left:max(42px,4vw);top:calc(72px + 6svh);bottom:124px;width:min(37vw,560px);z-index:6;pointer-events:none}
+.stage-left{position:absolute;left:max(42px,4vw);top:calc(72px + 8svh);bottom:124px;width:min(34vw,515px);z-index:6;pointer-events:none;will-change:transform;transform:translate3d(var(--text-shift,0px),0,0)}
 .stage-left button,.stage-left a,.stage-meta button{pointer-events:auto}
 .narrative{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-start;opacity:0;transform:translateY(42px);pointer-events:none;transition:opacity .48s ease, transform .75s cubic-bezier(.18,.75,.21,1)}
 .narrative.active{opacity:1;transform:translateY(0);pointer-events:auto}
 .narrative .overline{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:32px}
 .narrative .overline:before{content:"";width:22px;height:22px;background:#c4f75c;clip-path:polygon(0 0,100% 10%,88% 100%,9% 85%);border:1px solid #171d1c}
-.narrative h1{font-size:clamp(74px,8.3vw,148px);line-height:.84;letter-spacing:-.097em;font-weight:500;max-width:none;margin:0 0 35px}
+.narrative h1{font-size:clamp(63px,7.2vw,115px);line-height:.84;letter-spacing:-.097em;font-weight:500;max-width:none;margin:0 0 35px}
 .narrative h1 em{display:block;font-weight:400;font-family:Georgia,serif;font-style:italic;letter-spacing:-.1em}
 .narrative p{font-size:15px;line-height:1.82;max-width:500px;margin:0;color:#475047}
 .narrative p strong{color:#18201b}
@@ -85,7 +85,7 @@ body{background:#d8d7d0}
 @media(max-width:760px){
   .nav-shell .nav-inner{height:60px;min-height:60px;display:flex}.nav-shell .navlinks{display:flex;gap:13px;padding:0}.nav-shell .navlinks a{font-size:9px}.nav-shell .navlinks a:nth-child(n+3){display:none}.nav-shell .brand{font-size:17px}.nav-shell .right-note{display:none}
   .immersive{height:320svh}.immersive-stage:after{inset:10px}.stage-grid{padding:0}
-  .stage-left{left:18px;right:18px;top:82px;bottom:auto;width:auto}.narrative .overline{margin-bottom:18px;font-size:10px}.narrative h1{font-size:clamp(62px,14vw,96px);line-height:.91;margin-bottom:17px;max-width:260px}.narrative p{font-size:12.6px;line-height:1.62;max-width:315px}.narrative .mini{margin-top:12px;font-size:9px}
+  .stage-left{left:18px;right:18px;top:86px;bottom:auto;width:auto;transform:translate3d(0,var(--mobile-text-y,0px),0)}.narrative .overline{margin-bottom:18px;font-size:10px}.narrative h1{font-size:clamp(62px,14vw,96px);line-height:.91;margin-bottom:17px;max-width:260px}.narrative p{font-size:12.6px;line-height:1.62;max-width:315px}.narrative .mini{margin-top:12px;font-size:9px}
   .perception-art{inset:0}.art-viewer-note{bottom:60px;font-size:8px}.art-corner{font-size:8px;right:18px;top:auto;bottom:108px}.art-corner.right{display:none}
   .stage-meta{left:18px;right:18px;bottom:10px;gap:12px}.scene-selector{gap:5px;width:100%;flex-wrap:nowrap}.scene-selector button{font-size:8px;padding:10px 6px;flex:1;white-space:nowrap}.stage-instruction{display:none}.readout{top:66px;left:auto;right:18px;transform:none;font-size:8px}.scroll-track,.stage-visualization-note{display:none}.after-immersion .band-inner{grid-template-columns:1fr 1fr}.after-immersion span:nth-child(2){text-align:right}.after-immersion span:last-child{display:none}
 }
@@ -155,10 +155,24 @@ body{background:#d8d7d0}
  const smooth=(a,b,t)=>a+(b-a)*t;
  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
  const cubic=t=>t*t*(3-2*t);
+ const textPanel=document.querySelector('.stage-left');
  const updateScroll=()=>{
    const rect=scene.getBoundingClientRect();
    const span=Math.max(1,scene.offsetHeight-window.innerHeight);
    p=clamp((-rect.top)/span,0,1);
+   // The page is a viewport onto one sculpture: typography travels across it
+   // while camera and object sweep in the opposite direction.
+   const eased=(t)=>{t=clamp(t,0,1);return t*t*(3-2*t)};
+   const textDirection=p<.5?eased(p/.5):1-eased((p-.5)/.5);
+   if(textPanel){
+     if(compact()){
+       textPanel.style.setProperty('--text-shift','0px');
+       textPanel.style.setProperty('--mobile-text-y',(textDirection*17).toFixed(1)+'px');
+     } else {
+       const shift=Math.max(0,window.innerWidth-Math.min(515,window.innerWidth*.34)-window.innerWidth*.12)*textDirection;
+       textPanel.style.setProperty('--text-shift',shift.toFixed(1)+'px');
+     }
+   }
    // Three movement chapters. Scroll progress is continuous, not a slideshow.
    const next=p<.31?0:p<.72?1:2;
    if(next!==phase){phase=next;narratives.forEach((n,i)=>n.classList.toggle('active',i===phase));buttons.forEach((b,i)=>{b.classList.toggle('active',i===phase);b.setAttribute('aria-pressed',String(i===phase))})}
@@ -173,7 +187,7 @@ body{background:#d8d7d0}
    const dest=scene.getBoundingClientRect().top+window.scrollY+span*[.065,.51,.94][i];
    window.scrollTo({top:dest,behavior:reduce.matches?'instant':'smooth'});
  }));
- const pointer=(ev)=>{const r=surface.getBoundingClientRect();mouseX=clamp((ev.clientX-r.left)/r.width*2-1,-1,1);mouseY=clamp(1-(ev.clientY-r.top)/r.height*2,-1,1);cursor.style.left=`${ev.clientX-r.left}px`;cursor.style.top=`${ev.clientY-r.top}px`};
+ const pointer=(ev)=>{const r=surface.getBoundingClientRect();mouseX=clamp((ev.clientX-r.left)/r.width*2-1,-1,1);mouseY=clamp(1-(ev.clientY-r.top)/r.height*2,-1,1);if(cursor){cursor.style.left=`${ev.clientX-r.left}px`;cursor.style.top=`${ev.clientY-r.top}px`}};
  surface.addEventListener('pointermove',ev=>{pointer(ev);if(drag){spin+=(ev.clientX-lastX)*.006;tilt=clamp(tilt+(ev.clientY-lastY)*.003,-.95,.95);lastX=ev.clientX;lastY=ev.clientY}}, {passive:true});
  surface.addEventListener('pointerdown',ev=>{drag=true;lastX=ev.clientX;lastY=ev.clientY;surface.classList.add('dragging');surface.setPointerCapture?.(ev.pointerId);pointer(ev)});
  const done=()=>{drag=false;surface.classList.remove('dragging')};
@@ -241,8 +255,8 @@ body{background:#d8d7d0}
    vec3 pt=mix(mix(aA,aB,ab),aC,bc);
    float wave=sin(uTime*.85+aDepth*45.0+pt.y*6.0)*.055*uReduce;
    pt.x+=wave;pt.z+=cos(uTime*.65+pt.x*7.0+aDepth*55.0)*.045*uReduce;
-   float ry=.30*sin(uTime*.35)*uReduce+uOrbit.x+uMouse.x*.19;
-   float rx=uOrbit.y+uMouse.y*.10;
+   float ry=.20*sin(uTime*.35)*uReduce+uOrbit.x+uMouse.x*.16 + s*2.30;
+   float rx=uOrbit.y+uMouse.y*.08 + sin(s*6.283)*.31;
    float c=cos(ry),si=sin(ry);pt=vec3(pt.x*c+pt.z*si,pt.y,-pt.x*si+pt.z*c);
    c=cos(rx);si=sin(rx);pt=vec3(pt.x,pt.y*c-pt.z*si,pt.y*si+pt.z*c);
    // Soft pointer repulsion is native in the vertex shader; proximity changes geometry.
@@ -252,17 +266,16 @@ body{background:#d8d7d0}
    float camera=4.65;
    float perspective=camera/(camera-pt.z*.6);
    vec2 viewport=vec2(1.42,1.62);
+   // Real viewport-aspect-aware projection: the previous 1.26 zoom
+   // filled the screen with clipped lines rather than a readable sculpture.
    vec2 outpos=pt.xy*perspective/viewport;
-   // Treat the screen like a moving window onto a larger object.
-   vec2 path01=vec2(.34,.08);
-   vec2 path02=vec2(.10,-.04);
-   vec2 path03=vec2(-.22,.12);
-   vec2 drift=mix(path01,path02,ab);
-   drift=mix(drift,path03,bc);
-   float zoom=mix(1.26,1.08,ab);
-   zoom=mix(zoom,1.22,bc);
-   outpos*=zoom;
-   outpos+=drift;
+   float aspect=max(0.72,uView.x/max(1.0,uView.y));
+   outpos.x/=max(1.0,aspect*.95);
+   float abPan=ease(smoothstep(.08,.48,s));
+   float bcPan=ease(smoothstep(.52,.92,s));
+   vec2 cam=mix(vec2(.22,.035),vec2(-.23,-.035),abPan);
+   cam=mix(cam,vec2(.25,.055),bcPan);
+   outpos=outpos*.91+cam;
    gl_Position=vec4(outpos,0.0,1.0);
    vShade=clamp(.35+pt.z*.32+aDepth*.4,.15,1.0);
    vAlpha=aAlpha;
