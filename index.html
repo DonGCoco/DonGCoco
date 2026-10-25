@@ -188,7 +188,7 @@ body{background:#d8d7d0}
    window.scrollTo({top:dest,behavior:reduce.matches?'instant':'smooth'});
  }));
  const pointer=(ev)=>{const r=surface.getBoundingClientRect();mouseX=clamp((ev.clientX-r.left)/r.width*2-1,-1,1);mouseY=clamp(1-(ev.clientY-r.top)/r.height*2,-1,1);if(cursor){cursor.style.left=`${ev.clientX-r.left}px`;cursor.style.top=`${ev.clientY-r.top}px`}};
- surface.addEventListener('pointermove',ev=>{pointer(ev);if(drag){spin+=(ev.clientX-lastX)*.006;tilt=clamp(tilt+(ev.clientY-lastY)*.003,-.95,.95);lastX=ev.clientX;lastY=ev.clientY}}, {passive:true});
+ surface.addEventListener('pointermove',ev=>{pointer(ev);if(drag){spin+=(ev.clientX-lastX)*.011;tilt=clamp(tilt+(ev.clientY-lastY)*.006,-1.25,1.25);lastX=ev.clientX;lastY=ev.clientY}}, {passive:true});
  surface.addEventListener('pointerdown',ev=>{drag=true;lastX=ev.clientX;lastY=ev.clientY;surface.classList.add('dragging');surface.setPointerCapture?.(ev.pointerId);pointer(ev)});
  const done=()=>{drag=false;surface.classList.remove('dragging')};
  surface.addEventListener('pointerup',done);surface.addEventListener('pointercancel',done);surface.addEventListener('lostpointercapture',done);
@@ -257,8 +257,8 @@ body{background:#d8d7d0}
    vec3 pt=mix(mix(aA,aB,ab),aC,bc);
    float wave=sin(uTime*.85+aDepth*45.0+pt.y*6.0)*.055*uReduce;
    pt.x+=wave;pt.z+=cos(uTime*.65+pt.x*7.0+aDepth*55.0)*.045*uReduce;
-   float ry=.20*sin(uTime*.35)*uReduce+uOrbit.x+uMouse.x*.16 + s*2.30;
-   float rx=uOrbit.y+uMouse.y*.08 + sin(s*6.283)*.31;
+   float ry=.20*sin(uTime*.35)*uReduce+uOrbit.x+uMouse.x*.68 + s*2.30;
+   float rx=uOrbit.y+uMouse.y*.34 + sin(s*6.283)*.31;
    float c=cos(ry),si=sin(ry);pt=vec3(pt.x*c+pt.z*si,pt.y,-pt.x*si+pt.z*c);
    c=cos(rx);si=sin(rx);pt=vec3(pt.x,pt.y*c-pt.z*si,pt.y*si+pt.z*c);
    // Soft pointer repulsion is native in the vertex shader; proximity changes geometry.
