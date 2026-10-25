@@ -225,10 +225,12 @@ body{background:#d8d7d0}
  }
  function space(j,t){
    const k=j%3;
-   const centers=[[-.98,.38,-.18],[.62,.86,.2],[.84,-.84,-.4]];
+   // Independent depth anchors: a smaller distant upper node, a larger lower-mid node,
+   // and a third node below. Keep clear air between the two high forms.
+   const centers=[[-.82,-.02,-.12],[1.44,1.38,-.86],[.94,-1.04,-.32]];
    const theta=j*.113+t*(1.1+hash(j*.91)*2.1);
    const phi=t*6.283+(j%47)*.035;
-   const r=.37+.27*hash(j*.731);
+   const r=(k===1?.31:k===0?.56:.42)*(0.79+.39*hash(j*.731));
    const q=centers[k];
    // Volumetric spirograph trajectory around three physical-space camera anchors.
    return [q[0]+r*Math.sin(theta)*Math.cos(phi),q[1]+r*Math.sin(theta)*Math.sin(phi),q[2]+r*Math.cos(theta)+.17*Math.sin(phi*2+j)];
