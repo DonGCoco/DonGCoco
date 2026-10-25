@@ -31,45 +31,43 @@ body{background:#d8d7d0}
 .nav-shell .navlinks{gap:25px}
 .nav-shell .navlinks a{font-size:10px;letter-spacing:.12em}
 .nav-shell .right-note{font-size:10px;text-transform:uppercase;letter-spacing:.13em;white-space:nowrap}
-.immersive{height:340svh;position:relative;background:radial-gradient(circle at 76% 44%,#e6e4d9 0%,#d7d8d0 36%,#c5cac2 85%);border-bottom:1px solid #353d3777}
+.immersive{height:350svh;position:relative;background:radial-gradient(circle at 74% 44%,#e8e6dc 0%,#d8d8d0 35%,#c4c8c0 82%,#bcc1b8 100%);border-bottom:1px solid #353d3777}
 .immersive-stage{height:100svh;position:sticky;top:0;isolation:isolate;overflow:hidden}
-.immersive-stage:before{content:"";position:absolute;z-index:0;inset:0;pointer-events:none;opacity:.4;background:linear-gradient(90deg,transparent 0%,transparent 55%,#b7c1b46d 100%),linear-gradient(90deg,#63726322 1px, transparent 1px),linear-gradient(#63726322 1px,transparent 1px);background-size:auto,82px 82px,82px 82px;mask-image:linear-gradient(90deg,transparent 40%,#000 100%)}
-.stage-grid{height:100%;position:relative;z-index:1;display:grid;grid-template-columns: minmax(0,.96fr) minmax(0,1.04fr);align-items:center;gap:12px;padding-top:82px;padding-bottom:68px}
-.stage-left{align-self:center;position:relative;z-index:4;min-height:560px;display:flex;align-items:center;pointer-events:none}
+.immersive-stage:before{content:"";position:absolute;z-index:0;inset:0;pointer-events:none;opacity:.44;background:linear-gradient(90deg,transparent 0%,transparent 48%,#b9c2b46b 100%),linear-gradient(90deg,#6372631e 1px, transparent 1px),linear-gradient(#63726318 1px,transparent 1px);background-size:auto,84px 84px,84px 84px;mask-image:linear-gradient(90deg,transparent 12%,#000 32%,#000 100%)}
+.immersive-stage:after{content:"";position:absolute;inset:18px;border:1px solid #5b685f2f;pointer-events:none;z-index:1;box-shadow:inset 0 0 0 1px #eef2e920}
+.stage-grid{height:100%;position:relative;z-index:1;padding:0;width:100%;max-width:none;margin:0}
+.stage-left{position:absolute;left:max(42px,4vw);top:calc(72px + 6svh);bottom:124px;width:min(37vw,560px);z-index:6;pointer-events:none}
 .stage-left button,.stage-left a,.stage-meta button{pointer-events:auto}
-.narrative{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateY(42px);pointer-events:none;transition:opacity .48s ease, transform .75s cubic-bezier(.18,.75,.21,1)}
+.narrative{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-start;opacity:0;transform:translateY(42px);pointer-events:none;transition:opacity .48s ease, transform .75s cubic-bezier(.18,.75,.21,1)}
 .narrative.active{opacity:1;transform:translateY(0);pointer-events:auto}
 .narrative .overline{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:32px}
 .narrative .overline:before{content:"";width:22px;height:22px;background:#c4f75c;clip-path:polygon(0 0,100% 10%,88% 100%,9% 85%);border:1px solid #171d1c}
-.narrative h1{font-size:clamp(61px,7.7vw,126px);line-height:.86;letter-spacing:-.09em;font-weight:500;max-width:none;margin:0 0 35px}
-.narrative h1 em{display:block;font-weight:400;font-family:Georgia,serif;font-style:italic;letter-spacing:-.09em}
-.narrative p{font-size:15px;line-height:1.8;max-width:480px;margin:0;color:#475047}
+.narrative h1{font-size:clamp(74px,8.3vw,148px);line-height:.84;letter-spacing:-.097em;font-weight:500;max-width:none;margin:0 0 35px}
+.narrative h1 em{display:block;font-weight:400;font-family:Georgia,serif;font-style:italic;letter-spacing:-.1em}
+.narrative p{font-size:15px;line-height:1.82;max-width:500px;margin:0;color:#475047}
 .narrative p strong{color:#18201b}
 .narrative .mini{margin-top:24px;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#59655c}
 .narrative .mini span{display:inline-block;width:7px;height:7px;border-radius:50%;background:#181f19;margin-right:9px}
-.perception-art{height:min(79svh,800px);width:100%;position:relative;min-height:470px;z-index:2;touch-action:pan-y;cursor:grab}
+.perception-art{position:absolute;inset:0;height:100%;width:100%;min-height:100svh;z-index:2;touch-action:pan-y;cursor:grab}
 .perception-art.dragging{cursor:grabbing;touch-action:none}
 #perception-canvas{display:block;width:100%;height:100%;pointer-events:none}
-.art-corner{position:absolute;left:18px;top:12px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;line-height:1.7;pointer-events:none}
-.art-corner.right{left:auto;right:11px;top:auto;bottom:25px;text-align:right}
+.art-corner{position:absolute;right:max(42px,4vw);top:calc(72px + 7svh);font-size:10px;letter-spacing:.12em;text-transform:uppercase;line-height:1.7;pointer-events:none;text-align:left;color:#48544c}
+.art-corner.right{right:max(42px,4vw);top:auto;bottom:90px;text-align:right;color:#4a554c}
 .art-corner .green{display:inline-block;width:6px;height:6px;background:#a9eb3f;border-radius:50%;box-shadow:0 0 12px #c4f75c;vertical-align:middle;margin-right:7px}
-.art-viewer-note{position:absolute;left:50%;bottom:50px;transform:translateX(-50%);font-size:10px;letter-spacing:.16em;white-space:nowrap;text-transform:uppercase;color:#3d4c40a8;pointer-events:none}
+.art-viewer-note{position:absolute;left:50%;bottom:64px;transform:translateX(-50%);font-size:10px;letter-spacing:.16em;white-space:nowrap;text-transform:uppercase;color:#3d4c40a8;pointer-events:none}
 @keyframes artworkBreath{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-5px) scale(1.009)}}
 #perception-canvas{animation:artworkBreath 10s ease-in-out infinite}
-.art-cursor{position:absolute;border:1px solid #2d382d88;border-radius:50%;width:37px;height:37px;margin-left:-18.5px;margin-top:-18.5px;pointer-events:none;opacity:0;z-index:4;transition:opacity .2s ease}
-.perception-art:hover .art-cursor{opacity:1}
-.art-cursor:before,.art-cursor:after{content:"";position:absolute;background:#2d382d44}
-.art-cursor:before{left:50%;top:-6px;bottom:-6px;width:1px}.art-cursor:after{top:50%;left:-6px;right:-6px;height:1px}
-.stage-meta{position:absolute;z-index:5;left:0;right:0;bottom:23px;display:flex;align-items:end;justify-content:space-between;gap:25px}
+.art-cursor{display:none!important}
+.stage-meta{position:absolute;z-index:7;left:max(42px,4vw);right:max(42px,4vw);bottom:26px;display:flex;align-items:end;justify-content:space-between;gap:25px}
 .scene-selector{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.scene-selector button{border:1px solid #49524969;background:transparent;color:#333e35;padding:11px 13px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
-.scene-selector button.active,.scene-selector button:hover{background:#1a231f;color:#eef3e6}
+.scene-selector button{border:1px solid #49524969;background:rgba(216,215,208,.35);color:#333e35;padding:11px 13px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.scene-selector button.active,.scene-selector button:hover{background:#1a231f;color:#eef3e6;border-color:#1a231f}
 .stage-instruction{font-size:10px;line-height:1.8;letter-spacing:.11em;text-transform:uppercase;text-align:right;color:#556157}
-.readout{display:flex;gap:8px;align-items:center;position:absolute;z-index:6;left:50%;top:85px;transform:translateX(-50%);font-size:10px;letter-spacing:.15em;text-transform:uppercase;white-space:nowrap}
+.readout{display:flex;gap:8px;align-items:center;position:absolute;z-index:7;left:50%;top:86px;transform:translateX(-50%);font-size:10px;letter-spacing:.15em;text-transform:uppercase;white-space:nowrap}
 .readout .indicator{width:8px;height:8px;border-radius:50%;background:#9fe92d;box-shadow:0 0 12px #b8ff5a}
-.scroll-track{position:absolute;z-index:7;top:25%;right:13px;height:49%;width:1px;background:#58665b66}
+.scroll-track{position:absolute;z-index:7;top:23%;right:20px;height:54%;width:1px;background:#58665b55}
 .scroll-track i{display:block;position:absolute;top:0;width:3px;height:33%;left:-1px;background:#18231a;transform:translateY(0);will-change:transform}
-.stage-visualization-note{position:absolute;top:85px;right:55px;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#58645b;z-index:7;max-width:180px;line-height:1.5;text-align:right}
+.stage-visualization-note{position:absolute;top:86px;right:max(42px,4vw);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#58645b;z-index:7;max-width:210px;line-height:1.5;text-align:right}
 .after-immersion{padding:28px 0;border-bottom:1px solid #303a30}.after-immersion .band-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
 .after-immersion span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;line-height:1.6}
 .after-immersion span:nth-child(2){text-align:center}.after-immersion span:last-child{text-align:right}
@@ -81,32 +79,18 @@ body{background:#d8d7d0}
 .project:hover figure:after{border-color:#c4f75c6e}
 .project figure svg.visual{transition:transform .85s cubic-bezier(.2,.8,.2,1)}
 .project:hover figure svg.visual{transform:scale(1.055) translateY(-3px)}
-.project:hover h3{color:#25472f}
 .inline-link{transition:letter-spacing .2s ease,color .2s ease}.inline-link:hover{letter-spacing:.11em;color:#426a2f}
 .immersive-end{position:absolute;bottom:10svh;left:50%;transform:translateX(-50%);z-index:6;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#4c574e;text-align:center;pointer-events:none;opacity:.5}
-@media(max-width:1100px){.narrative h1{font-size:clamp(55px,7.8vw,90px)}.stage-left{min-height:490px}.perception-art{min-height:400px}}
+@media(max-width:1100px){.narrative h1{font-size:clamp(62px,7.8vw,110px)}.stage-left{width:min(41vw,500px)}.perception-art{min-height:100svh}}
 @media(max-width:760px){
   .nav-shell .nav-inner{height:60px;min-height:60px;display:flex}.nav-shell .navlinks{display:flex;gap:13px;padding:0}.nav-shell .navlinks a{font-size:9px}.nav-shell .navlinks a:nth-child(n+3){display:none}.nav-shell .brand{font-size:17px}.nav-shell .right-note{display:none}
-  .immersive{height:315svh}.stage-grid{grid-template-columns:1fr;grid-template-rows:47% 53%;gap:0;padding-top:68px;padding-bottom:76px}
-  .stage-left{grid-row:1;min-height:0;height:100%;align-self:start}.narrative{justify-content:flex-start;padding-top:4svh}.narrative .overline{margin-bottom:19px;font-size:10px}.narrative h1{font-size:clamp(58px,11.8vw,96px);line-height:.91;margin-bottom:17px}.narrative p{font-size:12.6px;line-height:1.62;max-width:440px}.narrative .mini{margin-top:12px;font-size:9px}
-  .perception-art{grid-row:2;min-height:0;height:100%;width:min(100%,550px);margin:auto}.art-viewer-note{bottom:16px;font-size:8px}.art-corner{font-size:8px;top:4px}.art-corner.right{display:none}
-  .stage-meta{bottom:12px}.scene-selector{gap:5px;width:100%;flex-wrap:nowrap}.scene-selector button{font-size:8px;padding:10px 6px;flex:1;white-space:nowrap}.stage-instruction{display:none}.readout{top:68px;left:auto;right:22px;transform:none;font-size:8px}.scroll-track,.stage-visualization-note{display:none}.after-immersion .band-inner{grid-template-columns:1fr 1fr}.after-immersion span:nth-child(2){text-align:right}.after-immersion span:last-child{display:none}
+  .immersive{height:320svh}.immersive-stage:after{inset:10px}.stage-grid{padding:0}
+  .stage-left{left:18px;right:18px;top:82px;bottom:auto;width:auto}.narrative .overline{margin-bottom:18px;font-size:10px}.narrative h1{font-size:clamp(62px,14vw,96px);line-height:.91;margin-bottom:17px;max-width:260px}.narrative p{font-size:12.6px;line-height:1.62;max-width:315px}.narrative .mini{margin-top:12px;font-size:9px}
+  .perception-art{inset:0}.art-viewer-note{bottom:60px;font-size:8px}.art-corner{font-size:8px;right:18px;top:auto;bottom:108px}.art-corner.right{display:none}
+  .stage-meta{left:18px;right:18px;bottom:10px;gap:12px}.scene-selector{gap:5px;width:100%;flex-wrap:nowrap}.scene-selector button{font-size:8px;padding:10px 6px;flex:1;white-space:nowrap}.stage-instruction{display:none}.readout{top:66px;left:auto;right:18px;transform:none;font-size:8px}.scroll-track,.stage-visualization-note{display:none}.after-immersion .band-inner{grid-template-columns:1fr 1fr}.after-immersion span:nth-child(2){text-align:right}.after-immersion span:last-child{display:none}
 }
 @media(max-width:395px){.narrative h1{font-size:clamp(52px,12vw,70px)}.narrative p{font-size:12px}.nav-shell .navlinks a:last-child{display:none}.scene-selector button{padding:9px 5px}}
 @media(prefers-reduced-motion:reduce){#perception-canvas{animation:none}html{scroll-behavior:auto}.narrative,.section-top,.project,.other,.topic,.about>*{transition:none!important}.has-reveal .section-top:not(.is-visible),.has-reveal .project:not(.is-visible),.has-reveal .other:not(.is-visible),.has-reveal .topic:not(.is-visible),.has-reveal .about>*:not(.is-visible){opacity:1;transform:none}}
-
-/* Personal academic identity; keep Perception Atlas as the internal concept only. */
-.nav-shell .brand{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;white-space:normal;line-height:1.05;letter-spacing:0}
-.nav-shell .brand-main{font-size:22px;font-weight:750;letter-spacing:-.05em;color:#171d1c}
-.nav-shell .brand-sub{font-size:9px;line-height:1.25;letter-spacing:.045em;color:#56615a;font-weight:550}
-@media(max-width:760px){
- .nav-shell .nav-inner{gap:9px}
- .nav-shell .brand{max-width:215px;flex:1;min-width:0}
- .nav-shell .brand-main{font-size:18px}
- .nav-shell .brand-sub{font-size:8px;line-height:1.22;letter-spacing:0;max-width:212px}
- .nav-shell .navlinks{gap:9px;flex-shrink:0}
-}
-@media(max-width:380px){.nav-shell .brand{max-width:192px}.nav-shell .brand-sub{font-size:7.5px}.nav-shell .navlinks a{font-size:8px}}
 </style></head><body>
 <header class="nav-shell"><div class="nav-inner wrap">
 <a class="brand" href="#top" aria-label="Jieru Dong — back to top"><span class="brand-main">Jieru Dong</span><span class="brand-sub">Spatial Computing · Human Perception · Interactive AI</span></a>
@@ -117,7 +101,7 @@ body{background:#d8d7d0}
  <div class="immersive-stage">
   <div class="readout"><span class="indicator"></span><span>LIVE / PERCEPTION FIELD</span></div>
   <div class="stage-visualization-note">Conceptual generative drawing<br>Not experimental data</div>
-  <div class="stage-grid wrap">
+  <div class="stage-grid">
    <div class="stage-left" aria-live="off">
     <div class="narrative active" data-scene="0"><div class="overline">01 / HUMAN PERCEPTION</div><h1>To <em>perceive.</em></h1><p>I'm <strong>Jieru Dong</strong>. I study how we see, interpret and interact with digital information — from visual comfort in XR to the subtle mechanics of attention.</p><div class="mini"><span></span>Feel / notice / understand</div></div>
     <div class="narrative" data-scene="1"><div class="overline">02 / COMPUTER VISION</div><h1>To <em>understand.</em></h1><p>What changes when a machine learns to see? My work explores visual understanding, image enhancement and accessible systems that translate visual signals into useful meaning.</p><div class="mini"><span></span>Sense / interpret / explain</div></div>
@@ -131,7 +115,7 @@ body{background:#d8d7d0}
     <div class="art-cursor" id="art-cursor"></div>
    </div>
   </div>
-  <div class="stage-meta wrap"><div class="scene-selector" aria-label="Choose visualization phase"><button data-go="0" class="active" type="button" aria-pressed="true">01 / Perception</button><button data-go="1" type="button" aria-pressed="false">02 / Vision</button><button data-go="2" type="button" aria-pressed="false">03 / Space</button></div><div class="stage-instruction">Scroll ↓ to transform<br><span id="phase-progress">01 / 03</span></div></div>
+  <div class="stage-meta"><div class="scene-selector" aria-label="Choose visualization phase"><button data-go="0" class="active" type="button" aria-pressed="true">01 / Perception</button><button data-go="1" type="button" aria-pressed="false">02 / Vision</button><button data-go="2" type="button" aria-pressed="false">03 / Space</button></div><div class="stage-instruction">Scroll ↓ to transform<br><span id="phase-progress">01 / 03</span></div></div>
   <div class="scroll-track" aria-hidden="true"><i id="track-progress"></i></div>
  </div>
 </section>
@@ -263,8 +247,16 @@ body{background:#d8d7d0}
    float perspective=camera/(camera-pt.z*.6);
    vec2 viewport=vec2(1.42,1.62);
    vec2 outpos=pt.xy*perspective/viewport;
-   // Move visual slightly to the right and up to balance the text.
-   outpos+=vec2(.08,.02);
+   // Treat the screen like a moving window onto a larger object.
+   vec2 path01=vec2(.34,.08);
+   vec2 path02=vec2(.10,-.04);
+   vec2 path03=vec2(-.22,.12);
+   vec2 drift=mix(path01,path02,ab);
+   drift=mix(drift,path03,bc);
+   float zoom=mix(1.26,1.08,ab);
+   zoom=mix(zoom,1.22,bc);
+   outpos*=zoom;
+   outpos+=drift;
    gl_Position=vec4(outpos,0.0,1.0);
    vShade=clamp(.35+pt.z*.32+aDepth*.4,.15,1.0);
    vAlpha=aAlpha;
