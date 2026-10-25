@@ -91,6 +91,12 @@ body{background:#d8d7d0}
 }
 @media(max-width:395px){.narrative h1{font-size:clamp(52px,12vw,70px)}.narrative p{font-size:12px}.nav-shell .navlinks a:last-child{display:none}.scene-selector button{padding:9px 5px}}
 @media(prefers-reduced-motion:reduce){#perception-canvas{animation:none}html{scroll-behavior:auto}.narrative,.section-top,.project,.other,.topic,.about>*{transition:none!important}.has-reveal .section-top:not(.is-visible),.has-reveal .project:not(.is-visible),.has-reveal .other:not(.is-visible),.has-reveal .topic:not(.is-visible),.has-reveal .about>*:not(.is-visible){opacity:1;transform:none}}
+
+.nav-shell .brand{display:flex;flex-direction:column;align-items:flex-start;gap:3px;justify-content:center;line-height:1.05;white-space:normal;letter-spacing:0}
+.nav-shell .brand-main{font-size:22px;font-weight:750;letter-spacing:-.05em;color:#171d1c}
+.nav-shell .brand-sub{font-size:9px;letter-spacing:.045em;line-height:1.25;color:#56615a;font-weight:550}
+@media(max-width:760px){.nav-shell .brand{min-width:0;max-width:210px}.nav-shell .brand-main{font-size:18px}.nav-shell .brand-sub{font-size:8px;letter-spacing:0}}
+@media(max-width:380px){.nav-shell .brand{max-width:190px}.nav-shell .brand-sub{font-size:7.5px}}
 </style></head><body>
 <header class="nav-shell"><div class="nav-inner wrap">
 <a class="brand" href="#top" aria-label="Jieru Dong — back to top"><span class="brand-main">Jieru Dong</span><span class="brand-sub">Spatial Computing · Human Perception · Interactive AI</span></a>
